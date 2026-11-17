@@ -1,0 +1,7 @@
+{
+  "appId": "app.findfound",
+  "appName": "Find & Found",
+  "webDir": "www",
+  "server": { "androidScheme": "https" },
+  "android": { "appendUserAgent": "FindFoundApp", "backgroundColor": "#EEF2F8" }
+}

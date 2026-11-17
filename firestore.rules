@@ -1,0 +1,64 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function me() { return request.auth.uid; }
+    function isAdmin() { return signedIn() && exists(/databases/$(database)/documents/admins/$(me())); }
+    function ownsNew() { return signedIn() && request.resource.data.ownerId == me(); }
+    function ownsOld() { return signedIn() && resource.data.ownerId == me(); }
+    function onlyChanges(keys) { return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys); }
+
+    // Lost & found reports and property listings: everyone reads; you change only your own
+    match /reports/{id}  { allow read: if true; allow create: if ownsNew(); allow update: if (ownsOld() && request.resource.data.ownerId == me()) || isAdmin() || (signedIn() && onlyChanges(['flags', 'reportsBy', 'aiCheck'])); allow delete: if ownsOld() || isAdmin(); }
+    match /listings/{id} { allow read: if true; allow create: if ownsNew(); allow update: if (ownsOld() && request.resource.data.ownerId == me()) || isAdmin() || (signedIn() && onlyChanges(['flags', 'reportsBy', 'aiCheck'])); allow delete: if ownsOld() || isAdmin(); }
+
+    // Safety alerts: anyone signed in may add their confirmation
+    match /alerts/{id} {
+      allow read: if true;
+      allow create: if ownsNew();
+      allow update: if (ownsOld() && request.resource.data.ownerId == me()) || isAdmin() || (signedIn() && onlyChanges(['confirms', 'flags', 'reportsBy', 'aiCheck']));
+      allow delete: if ownsOld() || isAdmin();
+    }
+
+    // Conversations: only the two people in them
+    match /threads/{tid} {
+      allow read: if signedIn() && me() in resource.data.members;
+      allow create: if signedIn() && me() in request.resource.data.members && request.resource.data.members.size() <= 2;
+      allow update: if signedIn() && me() in resource.data.members && onlyChanges(['updatedAt', 'lastText', 'lastFrom']);
+      match /msgs/{mid} {
+        allow read: if signedIn() && me() in get(/databases/$(database)/documents/threads/$(tid)).data.members;
+        allow create: if signedIn() && request.resource.data.from == me() && me() in get(/databases/$(database)/documents/threads/$(tid)).data.members;
+      }
+    }
+
+    // Each person's private data (read receipts, exact pins)
+    match /data/users/{uid}/{doc=**} { allow read, write: if signedIn() && me() == uid; }
+    match /profiles/{uid} { allow read: if true; allow write: if signedIn() && me() == uid; }
+
+    // Ads: requests go to you for review; only admins publish
+    match /ads/{id} { allow read: if true; allow write: if isAdmin(); }
+    match /adRequests/{uid} { allow read, write: if (signedIn() && me() == uid) || isAdmin(); }
+
+    // Site settings (theme) and the admin list
+    match /settings/{id} { allow read: if true; allow write: if isAdmin(); }
+
+    // Photos and 30-second clips saved by signed-in people
+    match /media/{id} { allow read: if true; allow create: if ownsNew() && request.resource.data.data is string && request.resource.data.data.size() < 260000; allow delete: if ownsOld() || isAdmin(); }
+    match /clips/{id} { allow read: if true; allow create: if ownsNew(); allow delete: if ownsOld() || isAdmin(); }
+    match /clipParts/{id} { allow read: if true; allow create: if signedIn() && request.resource.data.d is string && request.resource.data.d.size() < 200000; }
+    // Comments on alerts, with community flags
+    match /comments/{id} { allow read: if true; allow create: if ownsNew(); allow update: if (signedIn() && onlyChanges(['flags'])) || ownsOld(); allow delete: if ownsOld() || isAdmin(); }
+    // Ratings: one per person per item
+    match /ratings/{id} { allow read: if true; allow write: if signedIn() && request.resource.data.uid == me() && id.matches('.*__' + me()); }
+    // Help places (police, hospital, church, mosque, shelter)
+    match /help/{id} { allow read: if true; allow create: if ownsNew(); allow update, delete: if ownsOld() || isAdmin(); }
+    // Referrals: you can record who invited you, once
+    match /refs/{uid} { allow read: if true; allow create: if signedIn() && me() == uid && request.resource.data.by != uid; }
+    // Shared translations
+    match /i18n/{id} { allow read: if true; allow create: if signedIn(); }
+    // Stories and QR tags
+    match /stories/{id} { allow read: if true; allow create: if ownsNew(); allow delete: if ownsOld() || isAdmin(); }
+    match /tags/{id} { allow read: if true; allow create: if ownsNew(); allow delete: if ownsOld() || isAdmin(); }
+    match /admins/{uid} { allow read: if signedIn() && me() == uid; allow write: if false; }
+  }
+}
