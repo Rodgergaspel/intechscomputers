@@ -5,16 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="Find & Found: lost and found items, property, safety alerts and help nearby, worldwide, on a satellite map.">
 <title>Find & Found</title>
-<meta name="robots" content="index, follow">
-<meta name="keywords" content="lost and found, lost phone, found ID card, missing person, lost pet, houses to let, rentals, land for sale, apartments, safety alerts, police near me, Kenya, Nairobi">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Find &amp; Found">
-<meta property="og:title" content="Find &amp; Found — lost &amp; found, property and safety alerts on a map">
-<meta property="og:description" content="Report lost or found items, find land, rentals, houses and shops, see safety alerts and get help nearby — free, on a satellite map.">
-<meta property="og:image" content="icon-512.png">
-<meta name="twitter:card" content="summary">
-<link rel="canonical" href="__SITE__">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Find & Found","url":"__SITE__","applicationCategory":"LifestyleApplication","operatingSystem":"Android, iOS, Windows, Web","description":"Lost and found, property and real estate, safety alerts and help nearby on a satellite map. Works worldwide in your language and currency.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":"en"}</script>
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#1650C8">
 <link rel="icon" href="icon-192.png">
@@ -32,7 +22,6 @@
 <script src="ff-backend.js"></script>
 </head>
 <body>
-<noscript><div style="padding:24px;font-family:sans-serif"><h1>Find &amp; Found</h1><p>Lost &amp; found items, missing persons and pets; land, rentals, houses, apartments and shops; community safety alerts; police, hospitals, churches, mosques and shelters near you — on a satellite map. Please turn on JavaScript to use the app.</p></div></noscript>
 <title>Find&amp;Found Map</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -401,6 +390,7 @@ html:root[data-ff-theme="brand"]{--bg:#111C21;--panel:#1A2930;--ink:#F3F6F5;--mu
 
 /* ---- new features drawn in the Civic style (white, blue) ---- */
 :root:not([data-ff-theme="brand"]){--teal:var(--accent);--mustard:var(--amber);--coral:var(--accent);--tile-ink:var(--ink)}
+.getapp{align-items:center;padding-bottom:14px;margin-bottom:12px;border-bottom:1px solid var(--line)}.getapp b{color:var(--ink,#0b1b3a);font-size:15px}.getbtns{display:flex;flex-wrap:wrap;gap:8px}.getbtns a.btn{text-decoration:none}.appsteps li{margin:6px 0}
 .footlinks{display:flex;flex-wrap:wrap;gap:4px 18px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
 .footlinks button{font:inherit;font-size:13px;font-weight:600;color:var(--accent);background:none;border:0;padding:6px 0;cursor:pointer;min-height:32px}
 .pgrid{display:grid;grid-template-columns:1fr;gap:14px}@media (min-width:900px){.pgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.pgrid>*{margin-top:0}}
@@ -534,6 +524,40 @@ span.star{cursor:default;min-height:0;min-width:0;font-size:16px}
 .hbanner .hb span{position:absolute;left:8px;bottom:8px;background:rgba(255,255,255,.92);color:var(--ink);font-size:12px;font-weight:800;border-radius:8px;padding:3px 8px}
 #alerts .hbanner,#ads .hbanner{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:719px){.hbanner{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}.hbanner .hb:nth-child(3):last-child{grid-column:1/-1;aspect-ratio:32/10}.hbanner .hb span{font-size:11px}}
+/* Ask AI */
+.sicon{display:flex;align-items:center;justify-content:center;width:38px;min-height:38px;border:0;border-radius:10px;background:none;color:var(--accent);cursor:pointer;flex:0 0 auto}
+.sicon:hover{background:var(--soft)}
+.askai{display:flex;align-items:center;gap:8px;width:100%;margin-top:8px;min-height:40px;border:1px dashed var(--accent);border-radius:12px;background:var(--soft);color:var(--accent);font:inherit;font-size:13px;font-weight:700;padding:0 12px;cursor:pointer;text-align:left}
+.aifab{position:fixed;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border:0;border-radius:999px;background:linear-gradient(135deg,#1650C8,#7A3FD1);color:#fff;font:inherit;font-weight:800;font-size:15px;box-shadow:0 8px 24px rgba(22,80,200,.35);cursor:pointer}
+@media (max-width:819px){.aifab{bottom:calc(84px + env(safe-area-inset-bottom,0px));right:12px;min-height:48px;padding:0 14px}}
+#modal .mbox:has(.aibody){max-width:640px;width:100%;height:min(86vh,760px);display:flex;flex-direction:column;gap:10px}
+.aihead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.aibody{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:4px 2px;min-height:200px}
+.aimsg{max-width:88%;display:flex;flex-direction:column;gap:8px}
+.aimsg.user{align-self:flex-end;background:var(--accent);color:#fff;border-radius:16px 16px 4px 16px;padding:10px 12px}
+.aimsg.assistant{align-self:flex-start;background:var(--soft);border-radius:16px 16px 16px 4px;padding:10px 12px}
+.aitext{white-space:pre-wrap;font-size:14.5px;line-height:1.5}
+.aiimg{max-width:200px;border-radius:10px}
+.aicards{display:flex;flex-direction:column;gap:6px}
+.aicard{display:flex;gap:10px;align-items:center;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px;font:inherit;color:var(--ink);cursor:pointer}
+.aicard b{display:block;font-size:14px}.aicard .small{display:block}
+.aith{width:64px;height:48px;border-radius:8px;overflow:hidden;flex:0 0 auto;display:flex;align-items:center;justify-content:center;background:var(--soft)}
+.aith .banner,.aith img{width:100%;height:100%;object-fit:cover}.aith.al{color:#E08A00;background:#FFF0D1}
+.aiempty{display:flex;flex-direction:column;gap:10px;padding:8px 2px}.aisugg{display:flex;flex-wrap:wrap;gap:6px}
+.aipv{display:flex;align-items:center;gap:8px}.aipv img{height:56px;border-radius:8px}
+.aiform{display:flex;gap:6px;align-items:center}
+.aiform input#ai-in{flex:1;min-width:0;height:46px;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--field);color:var(--ink)}
+.aiic{display:flex;align-items:center;justify-content:center;width:44px;height:46px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--accent);cursor:pointer;flex:0 0 auto}
+.aibusy{padding-left:4px}
+.rz-t{font:800 12px var(--font,sans-serif);fill:#fff;paint-order:stroke;stroke:#1a2233;stroke-width:3px}.rz-s{font:600 10.5px var(--font,sans-serif);fill:#fff;paint-order:stroke;stroke:#1a2233;stroke-width:3px}
+.laws h3{margin:10px 0 4px;font-size:16px}.laws ul{padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5}
+@media (max-width:719px){#pfloc{flex-wrap:wrap}#pfloc input{flex:1 1 100%;min-width:0}}
+.areabar{display:flex;align-items:center;flex-wrap:wrap;gap:4px 12px;font-size:13.5px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 12px;margin:0 0 12px}.areabar>svg{color:var(--frame,var(--accent))}
+.sughd{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:8px 12px 2px}
+.sdot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.sug.aisug{background:var(--soft)}
+.sugs{max-height:min(60vh,520px);overflow-y:auto}
+.noai .aifab,.noai .askai,.noai .sicon[data-a=ailens],.noai .tool[data-a=ai]{display:none!important}
 </style>
 <script>document.documentElement.setAttribute('data-theme','light')</script>
 
@@ -575,6 +599,9 @@ span.star{cursor:default;min-height:0;min-width:0;font-size:16px}
       <path class="al-low" id="al-low"></path>
       <path class="al-med" id="al-med"></path>
       <path class="al-high" id="al-high"></path>
+      <defs><pattern id="rzhatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="10" height="10" fill="#5b6475"/><rect width="4" height="10" fill="#8a93a5"/></pattern><filter id="rzblur"><feGaussianBlur stdDeviation="2"/></filter></defs>
+      <path id="rz" fill="url(#rzhatch)" fill-opacity=".92" stroke="#1a2233" stroke-width="2" stroke-dasharray="6 4"></path>
+      <g id="rz-lab" pointer-events="none"></g>
       <circle class="c-acc" id="c-acc"></circle>
       <g id="c-grp">
         <circle class="c-main" id="c-main"></circle>
@@ -752,8 +779,9 @@ a{color:var(--prop)}
 <section class="sec" id="property"><div class="wrap" id="sec-prop"></div></section>
 <section class="sec" id="alerts"><div class="wrap" id="sec-alerts"></div></section>
 <section class="sec" id="ads"><div class="wrap" id="sec-ads"></div></section>
-<footer class="foot"><div class="wrap footlinks"><button data-a="fsearch">Search items</button><button data-a="tlost">Report lost</button><button data-a="tfound">Report found</button><button data-a="scan">AI scan</button><button data-a="thome">Property</button><button data-a="imei">IMEI / serial check</button><button data-a="qtags">QR tags</button><button data-a="region">Country &amp; language</button><button data-a="gohelp">Help nearby</button><button data-a="faq">Questions</button></div><div class="wrap"><div class="copy">© 2026 Find &amp; Found™. All rights reserved. The name, logo, design and code are protected. Copying or imitation is not allowed.</div><div class="copy">Meet in public places. Never pay to get an item back. <button class="btn link sm" data-a="rulesview" style="display:inline">Community guidelines</button></div><div id="acct"></div></div></footer>
+<footer class="foot"><div class="wrap getapp"><div><b>Get the app</b><span class="small muted"> Free on every device</span></div><div class="row getbtns"><a class="btn primary sm" href="https://github.com/Rodgergaspel/intechscomputers/releases/latest/download/FindFound-Android.apk" target="_blank" rel="noopener">Android</a><a class="btn primary sm" href="https://github.com/Rodgergaspel/intechscomputers/releases/latest/download/FindFound-Setup-1.0.0.exe" target="_blank" rel="noopener">Windows</a><button class="btn primary sm" data-a="getapp" data-k="ios">iPhone / iPad</button><button class="btn sm" data-a="getapp">Web &amp; help</button></div></div><div class="wrap footlinks"><button data-a="fsearch">Search items</button><button data-a="tlost">Report lost</button><button data-a="tfound">Report found</button><button data-a="scan">AI scan</button><button data-a="thome">Property</button><button data-a="imei">IMEI / serial check</button><button data-a="qtags">QR tags</button><button data-a="region">Country &amp; language</button><button data-a="gohelp">Help nearby</button><button data-a="faq">Questions</button><button data-a="laws">Rules &amp; the law</button><button data-a="getapp">Get the app</button></div><div class="wrap"><div class="copy">© 2026 Find &amp; Found™. All rights reserved. The name, logo, design and code are protected. Copying or imitation is not allowed. Posts are made by users and are not checked or guaranteed by Find &amp; Found; nothing here is legal or safety advice. <button class="btn link sm" data-a="laws" style="display:inline">Disclaimer &amp; the law</button></div><div class="copy">Meet in public places. Never pay to get an item back. <button class="btn link sm" data-a="rulesview" style="display:inline">Community guidelines</button></div><div id="acct"></div></div></footer>
 <nav class="tabbar" id="tabbar" aria-label="Sections"></nav>
+<button class="aifab" data-a="ai" aria-label="Ask AI"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.4 5.6L20 11l-5.6 2.4L12 19l-2.4-5.6L4 11l5.6-2.4z"/></svg><span>Ask AI</span></button>
 <div id="modal" hidden></div>
 <div id="toast" role="status" hidden></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
@@ -1183,6 +1211,7 @@ function loadGazetteer() {
   try {
     fetch('gazetteer.json').then(function (r) { return r.json(); }).then(function (g) {
       var iso3of = {}; Object.keys(g.countries).forEach(function (k) { if (g.countries[k][2]) iso3of[g.countries[k][2]] = k; });
+      GZ_COUNTRIES = g.countries || {};
       GZ = g.places.map(function (p) {
         var meta = g.countries[iso3of[p[1]]] || [p[1], ''];
         var o = { name: p[0], c2: p[1], lon: p[2], lat: p[3], pop: p[4] || 0, a1n: p[5] >= 0 ? g.adm1[p[5]] : '', k2n: p[6] >= 0 ? g.k2[p[6]] : '', k3n: p[7] >= 0 ? g.k3[p[7]] : '', kind: p[8], country: meta[0], cont: meta[1] };
@@ -1408,6 +1437,7 @@ function draw() {
     (a.sev === 'high' ? ah : a.sev === 'medium' ? am : al).push(circlePath(q.x, q.y, r));
   });
   attr(E['al-high'], { d: ah.join('') }); attr(E['al-med'], { d: am.join('') }); attr(E['al-low'], { d: al.join('') });
+  drawZones(pxKm, R);
 
   var local = S.phase === 'local', showPin = false, showCircle = false, showAcc = false;
   if (pin) {
@@ -1600,6 +1630,7 @@ function submitReport() {
   var f = S.form;
   if (!f.title.trim()) { S.titleErr = true; renderUI(); var el = $('f-title'); if (el) el.focus(); return; }
   if (!pin || S.posting) return;
+  if (zoneBlock(f)) return;
   if (!safetyGate('r' + f.title + f.desc + (f.photoId || ''), f.title + '\n' + f.desc, [f.photoId], submitReport)) return;
   if (f.ident && normId(f.ident).length >= 5 && !f.idHash) { sha256(normId(f.ident)).then(function (h) { f.idHash = h; submitReport(); }, function () { f.ident = ''; submitReport(); }); return; }
   var pub = jitter(pin.lat, pin.lon, isMinor() ? Math.max(1000, radius) : radius * 0.35);
@@ -1619,6 +1650,7 @@ function submitProp() {
   if (!f.title.trim()) { f.err = 'Add a title, e.g. “2-bedroom apartment, Kilimani”.'; renderSections(); return; }
   if (!(price > 0)) { f.err = 'Add the price in ' + curCountry().cur + '.'; renderSections(); return; }
   if (isMinor()) { f.err = 'Property listings are for adults (18+).'; renderSections(); return; }
+  if (zoneBlock(f)) return;
   if (!safetyGate('p' + f.title + f.desc + (f.photoId || ''), f.title + '\n' + f.desc, [f.photoId], submitProp)) return;
   f.err = ''; S.postingProp = true; renderSections();
   var pub = jitter(pin.lat, pin.lon, 120);
@@ -1633,6 +1665,7 @@ function submitAlert() {
   var f = S.alert;
   if (!pin) { needPin('alerts'); return; }
   if (f.desc.trim().length < 8) { f.err = 'Describe what happened in a few words.'; renderSections(); return; }
+  if (zoneBlock(f)) return;
   if (!safetyGate('a' + f.desc + (f.photoId || '') + (f.clipId || ''), f.atype + '\n' + f.desc, [f.photoId], submitAlert)) return;
   f.err = ''; S.postingAlert = true; renderSections();
   saveDoc('alerts', { atype: f.atype, sev: f.sev, desc: f.desc.trim().slice(0, 400), lat: pin.lat, lon: pin.lon, radius: Math.round(Math.min(radius, 2000)), place: place ? place.name : areaName(pin.lat, pin.lon), createdAt: Date.now(), ownerId: myId, confirms: [], photoId: f.photoId || null, clipId: f.clipId || null, sensitive: !!f.sensitive || isMinor(), prot: isMinor(), cc: curCountry().cc, flags: {} }, 'your alert', function (doc, local) {
@@ -1782,9 +1815,10 @@ function headerHtml() {
     var b = BACK[S.screen];
     return '<div class="row"><button class="btn iconbtn" data-a="back" aria-label="Back">' + svg('back', 20) + '</button><div class="grow"><div class="ell" style="font-size:16px;font-weight:800">' + esc(b[0]) + '</div><div class="small muted ell">' + esc(b[1]()) + '</div></div></div>';
   }
-  var sugs = S.showSug ? matches(S.query) : [];
-  return '<form class="search" id="qform" role="search"><span class="muted" style="display:flex">' + svg('search', 17, 2) + '</span><input id="q" autocomplete="off" placeholder="Type a place or paste a map link" aria-label="Type a place, coordinates or paste a map link" value="' + esc(S.query) + '"><button class="btn primary" type="submit">Go</button></form>' +
-    (sugs.length ? '<div class="sugs">' + sugs.map(function (s, i) { return '<button class="sug" data-a="sug" data-i="' + i + '"' + (s.none ? ' disabled' : '') + '><span class="b" style="font-size:14px">' + (s.link ? '<span style="display:inline-flex;vertical-align:-3px;margin-right:4px">' + svg('link', 15, 2) + '</span>' : '') + esc(s.title) + '</span><span class="small muted">' + esc(s.sub) + '</span></button>'; }).join('') + '</div>' : '') +
+  var hits = S.showSug ? contentHits(S.query) : { n: 0, html: '' };
+  var sugs = S.showSug ? matches(S.query).filter(function (x) { return !(hits.n && x.none); }) : [];
+  return '<form class="search" id="qform" role="search"><span class="muted" style="display:flex">' + svg('search', 17, 2) + '</span><input id="q" autocomplete="off" placeholder="Search places, items, property, alerts or help" aria-label="Search places, lost and found items, property, alerts or help places, or paste a map link" value="' + esc(S.query) + '"><button type="button" class="sicon" data-a="ailens" aria-label="Search with a photo (AI lens)" title="AI lens">' + ic(I2.scan, 19, 2.2) + '</button><button type="button" class="sicon" data-a="aimic" aria-label="Search by voice" title="Voice">' + ic(I2.mic, 19, 2.2) + '</button><button class="btn primary" type="submit">Go</button></form><button class="askai" data-a="ai">' + ic(I2.star, 16, 2.4) + 'Ask AI — describe it, snap it or say it</button>' +
+    (sugs.length || hits.n ? '<div class="sugs">' + hits.html + (sugs.length && hits.n ? '<div class="sughd">Places</div>' : '') + sugs.map(function (s, i) { return '<button class="sug" data-a="sug" data-i="' + i + '"' + (s.none ? ' disabled' : '') + '><span class="b" style="font-size:14px">' + (s.link ? '<span style="display:inline-flex;vertical-align:-3px;margin-right:4px">' + svg('link', 15, 2) + '</span>' : '') + esc(s.title) + '</span><span class="small muted">' + esc(s.sub) + '</span></button>'; }).join('') + '</div>' : '') +
     '<div class="layers" role="group" aria-label="Show on map">' + [['lf', 'Lost & Found', '#E5484D'], ['prop', 'Property', '#3D7BFF'], ['alerts', 'Alerts', '#F5A524']].map(function (l) { return '<button class="lchip' + (S.layers[l[0]] ? ' on' : '') + '" data-a="layer" data-l="' + l[0] + '" aria-pressed="' + S.layers[l[0]] + '"><i style="background:' + l[2] + '"></i>' + l[1] + '</button>'; }).join('') + (local ? '<button class="lchip" data-a="globe" aria-label="Back to globe" style="margin-left:auto">' + svg('globe', 15, 2) + 'Globe</button>' : '') + '</div>';
 }
 function statusNote() {
@@ -1823,7 +1857,7 @@ function mapHtml() {
     '<div class="row" style="align-items:flex-start"><div class="grow"><div class="ell" style="font-size:19px;font-weight:800;letter-spacing:-.3px">' + esc(place.name) + '</div><div class="small muted" style="font-variant-numeric:tabular-nums">' + pin.lat.toFixed(5) + ', ' + pin.lon.toFixed(5) + ' · <a href="' + gmaps(pin.lat, pin.lon) + '" target="_blank" rel="noopener">Open in Google Maps</a></div></div><span class="pill src">' + esc(srcL) + '</span></div>' +
     '<div class="row" style="justify-content:space-between;align-items:baseline"><span class="s13 b muted">Search radius</span><span class="big-r" data-r>' + fmt(radius) + '</span></div>' +
     '<input type="range" id="rad" min="0" max="100" step="0.5" value="' + sliderVal() + '" aria-label="Search radius">' +
-    '<div class="radrow"><label for="rad-n">Or type the distance</label><input id="rad-n" type="number" inputmode="numeric" min="1" step="10" value="' + radTyped() + '"><span>' + (S.dunit === 'mi' ? 'feet' : 'metres') + '</span><button class="chip' + (S.dunit === 'km' ? ' on' : '') + '" data-a="setdunit" data-v="km">km</button><button class="chip' + (S.dunit === 'mi' ? ' on' : '') + '" data-a="setdunit" data-v="mi">miles</button></div>' +
+    '<div class="radrow"><label for="rad-n">Or type the distance</label><input id="rad-n" type="number" inputmode="numeric" min="1" step="10" value="' + radTyped() + '"><span>' + (S.dunit === 'mi' ? 'feet' : 'metres') + '</span><button class="chip' + (S.dunit === 'km' && false ? ' on' : '') + '" hidden></button><button class="chip' + (!S.dunitUser ? ' on' : '') + '" data-a="setdunit" data-v="auto">Auto · ' + (autoDunit() === 'mi' ? 'miles' : 'km') + '</button><button class="chip' + (S.dunitUser === 'km' ? ' on' : '') + '" data-a="setdunit" data-v="km">km</button><button class="chip' + (S.dunitUser === 'mi' ? ' on' : '') + '" data-a="setdunit" data-v="mi">miles</button></div>' +
     '<div class="grid3"><button class="btn mode' + (S.mode === 'pin' ? ' on' : '') + '" data-a="mode" data-m="pin">' + svg('pin') + 'Drop pin</button><button class="btn mode' + (S.mode === 'draw' ? ' on' : '') + '" data-a="mode" data-m="draw">' + svg('circle') + 'Draw circle</button><button class="btn mode" data-a="locate">' + svg('target') + 'Locate me</button></div>' +
     '<div class="row" style="gap:8px"><button class="btn primary big grow" data-a="list" id="cta">Show ' + n + (n === 1 ? ' find' : ' finds') + '</button><button class="btn green big" data-a="report">' + svg('plus', 18, 2.6) + 'Report</button></div>' +
     statusNote() + '</div>';
@@ -2526,7 +2560,7 @@ function safetyGate(key, text, photoIds, again) {
   toast('Checking your post…');
   var imgs = (photoIds || []).filter(Boolean).map(function (id) { var s = blobSrc(id); return /^data:/.test(s) ? fetch(s).then(function (r) { return r.blob(); }) : null; }).filter(Boolean);
   Promise.all(imgs).then(function (blobs) {
-    return sampleCap.json('You are the safety checker for a public community app used by all ages (including children). Check this post. Reply with only JSON {"ok":true|false,"reason":"short reason for the poster"}. Reject sexual or explicit content, graphic gore, hate, harassment of a named private person, doxxing (home address of a private person), or content sexualising minors. Lost items, missing-person appeals, property ads and safety warnings are fine.\nPost text: ' + JSON.stringify(String(text || '').slice(0, 1500)), blobs.length ? { images: blobs.slice(0, 2), modelTier: 'quick' } : { modelTier: 'quick' });
+    return sampleCap.json('You are the safety checker for a public community app used by all ages (including children). Check this post. Reply with only JSON {"ok":true|false,"reason":"short reason for the poster"}. Reject sexual or explicit content, graphic gore, hate, harassment of a named private person, doxxing (home address of a private person), content sexualising minors, or photos/videos of military bases, barracks, airports’ secure areas, State House, police premises, embassies or other restricted government sites. Lost items, missing-person appeals, property ads and safety warnings are fine.\nPost text: ' + JSON.stringify(String(text || '').slice(0, 1500)), blobs.length ? { images: blobs.slice(0, 2), modelTier: 'quick' } : { modelTier: 'quick' });
   }).then(function (r) { if (r && r.ok === false) { openModal('blocked', { reason: r.reason || 'It breaks the community guidelines.' }); return; } S.passed[key] = 1; again(); }, function () { S.passed[key] = 1; again(); });
   return false;
 }
@@ -2536,6 +2570,7 @@ var GUIDELINES = [
   ['No explicit content', 'No nudity, sexual content, gore, hate or harassment. Find & Found is for all ages.'],
   ['Keep it safe', 'Meet in public places. Never pay to get an item back or to view a property.'],
   ['Clips', 'Clips are up to 30 seconds and must follow the same rules.'],
+  ['Follow the law', 'No photos, videos or exact locations of military, government, police, airport, embassy or other restricted places, in any country. Respect privacy and data-protection laws where you are.'],
   ['Fact-check', 'Flag posts that look AI-made, fake or misleading. Posts flagged by several people get a warning label; posts reported several times are hidden for review.']
 ];
 function guidelinesHtml() { return '<ol class="rules">' + GUIDELINES.map(function (g) { return '<li><b>' + esc(g[0]) + '.</b> ' + esc(g[1]) + '</li>'; }).join('') + '</ol>'; }
@@ -2553,6 +2588,7 @@ function flagLabel(r) {
 function colOf(id) { return reports.some(function (x) { return x.id === id; }) ? 'reports' : listings.some(function (x) { return x.id === id; }) ? 'listings' : alerts.some(function (x) { return x.id === id; }) ? 'alerts' : null; }
 function postById(id) { return itemById(id) || alerts.filter(function (x) { return x.id === id; })[0] || null; }
 function addTo(id, field, sub) {
+  if (String(id).indexOf('gx-') === 0) { toast('This is an example post.'); return; }
   var col = colOf(id), r = postById(id); if (!col || !r || !db || !myId) { toast('Sign in with saving on to do this.'); return; }
   var up = {};
   if (sub) { var f = Object.assign({ ai: [], fake: [], mis: [] }, r.flags || {}); if ((f[sub] || []).indexOf(myId) >= 0) { toast('You already flagged this.'); return; } f[sub] = (f[sub] || []).concat([myId]); up.flags = f; }
@@ -2574,7 +2610,7 @@ function translatePost(id) {
 function postTools(r) {
   var id = esc(r.id);
   return '<div class="ptools"><button class="btn link sm" data-a="flagmenu" data-id="' + id + '">' + svg('alert', 15, 2) + 'Flag</button>' + (sampleCap ? '<button class="btn link sm" data-a="aicheck" data-id="' + id + '">AI check</button>' + (S.lang !== 'en' || true ? '<button class="btn link sm" data-a="trpost" data-id="' + id + '">Translate</button>' : '') : '') + '</div>' +
-    (S.flagOpen === r.id ? '<div class="flagmenu"><button class="btn sm" data-a="flag" data-k="ai" data-id="' + id + '">Looks AI-made</button><button class="btn sm" data-a="flag" data-k="fake" data-id="' + id + '">Fake / false</button><button class="btn sm" data-a="flag" data-k="mis" data-id="' + id + '">Misleading</button><button class="btn sm ghost-red" data-a="reportpost" data-id="' + id + '">Report: breaks rules</button></div>' : '') +
+    (S.flagOpen === r.id ? '<div class="flagmenu"><button class="btn sm" data-a="flag" data-k="ai" data-id="' + id + '">Looks AI-made</button><button class="btn sm" data-a="flag" data-k="fake" data-id="' + id + '">Fake / false</button><button class="btn sm" data-a="flag" data-k="mis" data-id="' + id + '">Misleading</button><button class="btn sm ghost-red" data-a="reportpost" data-id="' + id + '">Report: breaks rules</button><button class="btn sm ghost-red" data-a="reportpost" data-id="' + id + '">Shows a restricted place</button></div>' : '') +
     (S.tr && S.tr[r.id] ? '<p class="trbox">' + esc(S.tr[r.id]) + '</p>' : '');
 }
 
@@ -2639,7 +2675,7 @@ function setCountry(cc) {
 var XMODAL = {
   region: regionModalHtml,
   age: function (m, head) { return head('Before you post', 'How old are you? We use this only to protect younger people. It stays on your device.') + '<div class="stack" style="gap:8px"><button class="btn primary big" data-a="ageset" data-v="adult">I’m 18 or older</button><button class="btn big" data-a="ageset" data-v="minor">I’m under 18</button></div><p class="small muted" style="line-height:1.5">Under 18: your name is hidden, photos are blurred, your location is shown less precisely, and phone numbers and links are removed from your messages.</p>'; },
-  rules: function (m, head) { return head('Community guidelines', 'Please read and agree before posting.') + guidelinesHtml() + (m.view ? '' : '<button class="btn primary big" data-a="rulesok">I agree</button>'); },
+  rules: function (m, head) { return head('Community guidelines', 'Please read and agree before posting.') + guidelinesHtml() + '<p class="small" style="line-height:1.5"><b>Follow the law where you are.</b> No photos or locations of military, government or other restricted places, no personal details of others. <button class="btn link sm" data-a="laws" style="display:inline">Rules &amp; the law</button></p><p class="small muted" style="line-height:1.5">' + esc(DISCLAIMER) + '</p>' + (m.view ? '' : '<button class="btn primary big" data-a="rulesok">I agree</button>'); },
   blocked: function (m, head) { return head('This can’t be posted', 'It looks like it breaks the community guidelines.') + '<div class="note warn">' + esc(m.reason) + '</div>' + guidelinesHtml() + '<button class="btn primary" data-a="mclose">Edit my post</button>'; },
   blur: function (m, head) { return head('Blur faces or items', 'Drag over faces, number plates, ID cards or anything private. Tap once for a small box.') + '<canvas id="blurcv" class="blurcv"></canvas><div class="row" style="flex-wrap:wrap;gap:8px"><span id="blurn" class="small muted grow">' + (m.boxes.length ? m.boxes.length + ' areas blurred' : '') + '</span>' + (sampleCap ? '<button class="btn sm" data-a="blurai"' + (m.finding ? ' disabled' : '') + '>' + (m.finding ? 'Finding…' : 'Find faces with AI') + '</button>' : '') + '<button class="btn sm" data-a="blurundo">Undo</button><label class="toggle"><input type="checkbox" id="blurall"' + (m.all ? ' checked' : '') + (isMinor() ? ' disabled' : '') + '> Blur whole photo</label></div>' + (isMinor() ? '<p class="small muted">Photos from under-18s are fully blurred.</p>' : '') + '<button class="btn primary big" data-a="blursave">Use this photo</button>'; },
   flagmenu: null
@@ -2677,11 +2713,13 @@ function submitHelp() {
   if (!pin || S.phase !== 'local') { needPin('help'); return; }
   if (!f.name) { f.err = 'Add the name of the place.'; renderExtra(); return; }
   if (!db || !myId) { f.err = 'Sign in with saving on to add places.'; renderExtra(); return; }
+  if (zoneBlock(f)) return;
   if (!safetyGate('h' + f.name, f.name, [], submitHelp)) return;
   db.collection('help').doc().set({ type: f.type || 'police', name: f.name.slice(0, 80), phone: f.phone.slice(0, 40), lat: pin.lat, lon: pin.lon, cc: curCountry().cc, ownerId: myId, createdAt: Date.now() }).then(function () { S.helpForm = null; toast('Help place added. Thank you.'); renderExtra(); }, function (e) { dbErr(e, 'the help place'); });
 }
 function startWorldDb() {
   db.collection('ratings').limit(1000).onSnapshot(function (s) { ratings = {}; s.docs.forEach(function (d) { var x = d.data(); if (!x || !x.target) return; (ratings[x.target] = ratings[x.target] || []).push({ stars: Math.max(1, Math.min(5, +x.stars || 0)), uid: x.uid }); }); scheduleSections(); renderExtra(); }, function () {});
+  db.collection('zones').limit(500).onSnapshot(function (s) { dbZones = snapList(s).filter(function (z) { return z.lat != null && z.r > 0; }).map(function (z) { return { name: z.name || 'Restricted area', lat: +z.lat, lon: +z.lon, r: +z.r, kind: z.kind || 'Restricted' }; }); kick(); scheduleSections(); }, function () {});
   db.collection('help').limit(500).onSnapshot(function (s) { helpPts = snapList(s).filter(hasPos); renderExtra(); }, function () {});
   if (myId) {
     db.collection('refs').where('by', '==', myId).limit(500).onSnapshot(function (s) { myRefs = s.size || s.docs.length; renderExtra(); }, function () {});
@@ -2831,28 +2869,28 @@ function splitHead(html) {
 }
 function toolBtn(a, icon, label, extra) { return '<button class="tool" data-a="' + a + '"' + (extra || '') + '><span class="ti">' + icon + '</span><span class="tl">' + label + '</span></button>'; }
 function tabsHtml(key, tabs) { return '<div class="htabs" role="tablist">' + tabs.map(function (t) { return '<button class="htab2' + (S[key] === t[0] ? ' on' : '') + '" role="tab" aria-selected="' + (S[key] === t[0]) + '" data-a="hubtab" data-k="' + key + '" data-v="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>'; }
-function hub(head, tools, tabs, body, ban) { return head + (ban || '') + '<div class="tools">' + tools + '</div>' + tabs + '<div class="hubbody">' + body + '</div>'; }
+function hub(head, tools, tabs, body, ban, area) { return head + (ban || '') + (area || '') + '<div class="tools">' + tools + '</div>' + tabs + '<div class="hubbody">' + body + '</div>'; }
 function lfHub() {
   var parts = splitHead(lfSection());
-  var tools = toolBtn('tlost', ic(I2.alert, 24, 2.2), 'Report lost') + toolBtn('tfound', ic(I2.hand, 24, 2.2), 'Report found') + toolBtn('scan', ic(I2.scan, 24, 2.2), 'AI Scan') + toolBtn('catmap', svg('pin', 22, 2.2), 'On the map', ' data-l="lf"') + toolBtn('imei', ic(I2.list, 24, 2.2), 'IMEI / serial') + toolBtn('qtags', ic(I2.qr, 24, 2.2), 'QR tags') + toolBtn('qmissing', ic(I2.person, 24, 2.2), 'Missing person') + toolBtn('qpet', ic(I2.paw, 24, 2.2), 'Lost pets') + toolBtn('qsight', ic(I2.eye, 24, 2.2), 'Report a sighting') + toolBtn('orgs', ic(I2.house, 24, 2.2), 'Organisations');
+  var tools = toolBtn('ai', ic(I2.star, 24, 2.2), 'Ask AI') + toolBtn('tlost', ic(I2.alert, 24, 2.2), 'Report lost') + toolBtn('tfound', ic(I2.hand, 24, 2.2), 'Report found') + toolBtn('scan', ic(I2.scan, 24, 2.2), 'AI Scan') + toolBtn('catmap', svg('pin', 22, 2.2), 'On the map', ' data-l="lf"') + toolBtn('imei', ic(I2.list, 24, 2.2), 'IMEI / serial') + toolBtn('qtags', ic(I2.qr, 24, 2.2), 'QR tags') + toolBtn('qmissing', ic(I2.person, 24, 2.2), 'Missing person') + toolBtn('qpet', ic(I2.paw, 24, 2.2), 'Lost pets') + toolBtn('qsight', ic(I2.eye, 24, 2.2), 'Report a sighting') + toolBtn('orgs', ic(I2.house, 24, 2.2), 'Organisations');
   var body = S.lfTab === 'how' ? howHtml() + '<div class="warncard">' + ic(I2.warn, 28, 2.2) + '<div><b>Never pay before you see the item</b><p>Find &amp; Found never asks you to pay to get an item back. Meet in a public place and check it’s yours first.</p></div></div><div class="news" style="margin-top:14px"><b>Add identifiers to your reports</b><p>A phone’s IMEI or a bike’s serial number lets us match found items instantly — and it stays private.</p></div>'
     : S.lfTab === 'stories' ? stripHead(storiesHtml()) : parts[1];
-  return hub(parts[0], tools, tabsHtml('lfTab', [['reports', 'Reports'], ['how', 'How it works'], ['stories', 'Stories of hope']]), body, headBanner('lost', [['item', 'Phone', 'Phones', 'data-a="lfcat" data-v="Phone"'], ['item', 'Wallet', 'Wallets & IDs', 'data-a="lfcat" data-v="Wallet"'], ['item', 'Keys', 'Keys', 'data-a="lfcat" data-v="Keys"'], ['item', 'Pet', 'Pets', 'data-a="lfcat" data-v="Pet"']]));
+  return hub(parts[0], tools, tabsHtml('lfTab', [['reports', 'Reports'], ['how', 'How it works'], ['stories', 'Stories of hope']]), body, headBanner('lost', [['item', 'Phone', 'Phones', 'data-a="lfcat" data-v="Phone"'], ['item', 'Wallet', 'Wallets & IDs', 'data-a="lfcat" data-v="Wallet"'], ['item', 'Keys', 'Keys', 'data-a="lfcat" data-v="Keys"'], ['item', 'Pet', 'Pets', 'data-a="lfcat" data-v="Pet"']]), areaBar('lf'));
 }
 function stripHead(h) { return splitHead(h)[1] || h; }
 function propHub() {
   var parts = splitHead(propSection());
-  var tools = toolBtn('propnew', svg('plus', 22, 2.4), 'List a property') + toolBtn('import', ic(I2.list, 24, 2.2), 'Import listings') + toolBtn('catmap', svg('pin', 22, 2.2), 'On the map', ' data-l="prop"') + toolBtn('pfmap', svg('target', 22, 2.2), 'Search near a pin') + toolBtn('pfquick', ic(I2.house, 24, 2.2), 'Rentals', ' data-t="To let"') + toolBtn('pfquickk', ic(I2.house, 24, 2.2), 'Land', ' data-t="Land"');
+  var tools = toolBtn('ai', ic(I2.star, 24, 2.2), 'Ask AI') + toolBtn('propnew', svg('plus', 22, 2.4), 'List a property') + toolBtn('import', ic(I2.list, 24, 2.2), 'Import listings') + toolBtn('catmap', svg('pin', 22, 2.2), 'On the map', ' data-l="prop"') + toolBtn('pfmap', svg('target', 22, 2.2), 'Search near a pin') + toolBtn('pfquick', ic(I2.house, 24, 2.2), 'Rentals', ' data-t="To let"') + toolBtn('pfquickk', ic(I2.house, 24, 2.2), 'Land', ' data-t="Land"');
   var body = S.prTab === 'owners' ? '<div class="pgrid"><div class="promo mustard"><span class="k">For owners &amp; agents</span><h3>List free. Keep 100% of your fees.</h3><p>Post one property or import many at once. Your photos and text stay yours — all rights reserved.</p><button class="btn dk" data-a="import">Import my listings</button></div><div class="promo dark"><span class="k">Get rated</span><h3>Good service earns stars</h3><p>Clients can rate listings. Clear photos, real prices and quick replies build trust.</p></div><div class="promo dark"><span class="k">Stay safe</span><h3>Never take deposits before a viewing</h3><p>Meet clients at the property. Report fake listings with the Flag button.</p></div></div>'
     : S.prTab === 'clients' ? '<div class="pgrid"><div class="promo teal"><span class="k">For clients</span><h3>Contact owners and agents free' + (promoOn() ? ' until ' + esc(promoDate()) : '') + '</h3><p>Message the owner or agent from any listing. Sort by price, filter by type, or search near a place or your pin.</p></div><div class="promo dark"><span class="k">View before you pay</span><h3>Never send money to hold a viewing</h3><p>Check the property and the papers first. Flag anything that looks fake.</p></div><div class="promo dark"><span class="k">Rate what you see</span><h3>Help others choose</h3><p>Leave stars on listings after a viewing.</p></div></div>'
     : parts[1];
-  return hub(parts[0], tools, tabsHtml('prTab', [['list', 'Listings'], ['owners', 'Owners & agents'], ['clients', 'Clients']]), body, headBanner('prop', [['House', '', 'Houses', 'data-a="pfquickk" data-t="House"'], ['Apartment', '', 'Apartments', 'data-a="pfquickk" data-t="Apartment"'], ['Land', '', 'Land', 'data-a="pfquickk" data-t="Land"'], ['Shop', '', 'Shops', 'data-a="pfquickk" data-t="Shop"']]));
+  return hub(parts[0], tools, tabsHtml('prTab', [['list', 'Listings'], ['owners', 'Owners & agents'], ['clients', 'Clients']]), body, headBanner('prop', [['House', '', 'Houses', 'data-a="pfquickk" data-t="House"'], ['Apartment', '', 'Apartments', 'data-a="pfquickk" data-t="Apartment"'], ['Land', '', 'Land', 'data-a="pfquickk" data-t="Land"'], ['Shop', '', 'Shops', 'data-a="pfquickk" data-t="Shop"']]), areaBar('prop'));
 }
 function alertsHub() {
   var parts = splitHead(alertsSection()), hp = splitHead(helpHtml());
-  var tools = toolBtn('alnew', ic(I2.bell, 24, 2.2), 'Post an alert') + toolBtn('catmap', svg('pin', 22, 2.2), 'Risk map', ' data-l="alerts"') + toolBtn('qmissing', ic(I2.person, 24, 2.2), 'Missing person') + toolBtn('hubhelp', ic(I2.house, 24, 2.2), 'Help nearby') + toolBtn('helpnew', svg('plus', 22, 2.4), 'Add a help place') + toolBtn('rulesview', ic(I2.list, 24, 2.2), 'Guidelines');
+  var tools = toolBtn('ai', ic(I2.star, 24, 2.2), 'Ask AI') + toolBtn('alnew', ic(I2.bell, 24, 2.2), 'Post an alert') + toolBtn('catmap', svg('pin', 22, 2.2), 'Risk map', ' data-l="alerts"') + toolBtn('qmissing', ic(I2.person, 24, 2.2), 'Missing person') + toolBtn('hubhelp', ic(I2.house, 24, 2.2), 'Help nearby') + toolBtn('helpnew', svg('plus', 22, 2.4), 'Add a help place') + toolBtn('rulesview', ic(I2.list, 24, 2.2), 'Guidelines') + toolBtn('laws', ic(I2.warn, 24, 2.2), 'Rules & the law');
   var body = S.alTab === 'help' ? '<div id="help"><p class="hubnote">' + esc(emergencyLine()) + '</p>' + hp[1] + '</div>' : parts[1];
-  return hub(parts[0].replace('Safety alerts</div>', 'Alerts &amp; help</div>'), tools, tabsHtml('alTab', [['alerts', 'Alerts & risk areas'], ['help', 'Help nearby']]), body, headBanner('alert', [['Alert', '', 'Safety alerts', 'data-a="hubtab" data-k="alTab" data-v="alerts"'], ['Office', '', 'Police & help', 'data-a="hubhelp"'], ['House', '', 'Shelters', 'data-a="helpshelter"']]));
+  return hub(parts[0].replace('Safety alerts</div>', 'Alerts &amp; help</div>'), tools, tabsHtml('alTab', [['alerts', 'Alerts & risk areas'], ['help', 'Help nearby']]), body, headBanner('alert', [['Alert', '', 'Safety alerts', 'data-a="hubtab" data-k="alTab" data-v="alerts"'], ['Office', '', 'Police & help', 'data-a="hubhelp"'], ['House', '', 'Shelters', 'data-a="helpshelter"']]), areaBar('alerts'));
 }
 function adsHub() {
   var parts = splitHead(adsSection()), sp = splitHead(supportHtml())[1];
@@ -2993,8 +3031,11 @@ XMODAL.scan = function (m, head) {
 function renderThemePick() { var el = $('themepick'); if (el) el.innerHTML = ''; }
 
 // ---------- units: km or miles; prices in local currency, KSh or USD ----------
-S.dunit = lsGet('ff-dunit', '') || (/^(US|GB)$/.test(S.cc) ? 'mi' : 'km');
-S.pcur = lsGet('ff-pcur', 'local');
+S.dunitUser = lsGet('ff-dunit', '');
+function autoDunit() { var cc = typeof focusCC === 'function' ? focusCC() : S.cc; return /^(US|GB|LR|MM)$/.test(cc) ? 'mi' : 'km'; }
+S.dunit = S.dunitUser || (/^(US|GB|LR|MM)$/.test(S.cc) ? 'mi' : 'km');
+setInterval(function () { if (S.dunitUser) return; var a = autoDunit(); if (a !== S.dunit) { S.dunit = a; renderUI(); renderSections(); updateRadiusUI(); } }, 700);
+S.pcur = lsGet('ff-pcur', '') || 'local';
 var MI = 1.609344;
 function fmt(m) {
   if (S.dunit === 'mi') { var ft = m * 3.28084; if (ft < 1000) return (Math.round(ft / 10) * 10).toLocaleString('en') + ' ft'; var mi = m / 1609.344; return (mi < 10 ? mi.toFixed(1).replace(/\.0$/, '') : Math.round(mi).toLocaleString('en')) + ' mi'; }
@@ -3005,18 +3046,18 @@ function dispCur(rCur) { return S.pcur === 'local' ? (rCur || curCountry().cur) 
 function conv(n, from, to) { from = from || 'KES'; if (from === to) return n; if (from === 'KES' && to === 'USD') return n / kesRate(); if (from === 'USD' && to === 'KES') return n * kesRate(); return null; }
 function fmtMoney(n, cur) {
   if (cur === 'KES') return 'KSh ' + Math.round(n).toLocaleString('en-KE');
-  try { return new Intl.NumberFormat(locale(), { style: 'currency', currency: cur, maximumFractionDigits: n < 100 ? 2 : 0 }).format(n); } catch (e) { return cur + ' ' + Math.round(n).toLocaleString('en'); }
+  try { return new Intl.NumberFormat(locale(), { style: 'currency', currency: cur, minimumFractionDigits: 0, maximumFractionDigits: n < 10 ? 2 : 0 }).format(n); } catch (e) { return cur + ' ' + Math.round(n).toLocaleString('en'); }
 }
 function kes(n, cur) { cur = cur || 'KES'; var to = dispCur(cur), v = conv(n, cur, to); return v == null || to === cur ? fmtMoney(n, cur) : '≈ ' + fmtMoney(v, to); }
 function priceIn(r) { var v = conv(r.price, r.cur || 'KES', dispCur(r.cur)); return v == null ? r.price : v; }
 function unitRow() {
   var c = curCountry().cur, chip = function (k, v, label, on) { return '<button class="chip' + (on ? ' on' : '') + '" data-a="' + k + '" data-v="' + v + '">' + label + '</button>'; };
-  return '<div class="pfrow"><span class="pflab">Show in</span><div class="chips">' + chip('setpcur', 'local', 'Local (' + esc(c === 'KES' ? 'KSh' : c) + ')', S.pcur === 'local') + chip('setpcur', 'KES', 'KSh', S.pcur === 'KES') + chip('setpcur', 'USD', 'US$', S.pcur === 'USD') + '</div><div class="chips">' + chip('setdunit', 'km', 'km', S.dunit === 'km') + chip('setdunit', 'mi', 'miles', S.dunit === 'mi') + '</div>' +
+  return '<div class="pfrow"><span class="pflab">Show in</span><div class="chips">' + chip('setpcur', 'local', 'Auto · ' + esc(c === 'KES' ? 'KSh' : c), S.pcur === 'local') + chip('setpcur', 'KES', 'KSh', S.pcur === 'KES') + chip('setpcur', 'USD', 'US$', S.pcur === 'USD') + '</div><div class="chips">' + chip('setdunit', 'auto', 'Auto · ' + (autoDunit() === 'mi' ? 'miles' : 'km'), !S.dunitUser) + chip('setdunit', 'km', 'km', S.dunitUser === 'km') + chip('setdunit', 'mi', 'miles', S.dunitUser === 'mi') + '</div>' +
     (S.pcur !== 'local' ? '<span class="small muted" style="flex-basis:100%">Converted at 1 US$ = KSh ' + kesRate() + ' (approximate). Prices in other currencies show as listed.</span>' : '') +
     (isAdmin ? '<form id="rateform" class="row" style="gap:6px;flex-basis:100%"><span class="small muted">Owner only · KSh per US$</span><input id="rate-in" inputmode="decimal" value="' + kesRate() + '" style="width:100px"><button class="btn sm" type="submit">Save rate</button></form>' : '') + '</div>';
 }
-XCLICK.setpcur = function (b) { S.pcur = b.getAttribute('data-v'); lsSet('ff-pcur', S.pcur); S.pf.pmin = 0; S.pf.pmax = 0; renderUI(); renderSections(); };
-XCLICK.setdunit = function (b) { S.dunit = b.getAttribute('data-v'); lsSet('ff-dunit', S.dunit); renderUI(); renderSections(); updateRadiusUI(); };
+XCLICK.setpcur = function (b) { S.pcur = b.getAttribute('data-v'); lsSet('ff-pcur', S.pcur === 'local' ? '' : S.pcur); toast(S.pcur === 'local' ? 'Prices follow the place you’re looking at.' : 'Prices shown in ' + (S.pcur === 'KES' ? 'KSh' : 'US$') + '.'); S.pf.pmin = 0; S.pf.pmax = 0; renderUI(); renderSections(); };
+XCLICK.setdunit = function (b) { var v = b.getAttribute('data-v'); S.dunitUser = v === 'auto' ? '' : v; lsSet('ff-dunit', S.dunitUser); S.dunit = S.dunitUser || autoDunit(); renderUI(); renderSections(); updateRadiusUI(); toast(v === 'auto' ? 'Distances follow the place you’re looking at.' : 'Distances in ' + (v === 'mi' ? 'miles' : 'km') + '.'); };
 function dUnitLabel() { return S.dunit === 'mi' ? 'miles' : 'km'; }
 
 // ---------- illustrated image banners (used until people add real photos) ----------
@@ -3043,6 +3084,356 @@ XCLICK.helpshelter = function () { S.helpType = 'shelter'; hubTo('alTab', 'help'
 function headBanner(theme, scenes, title) {
   return '<div class="hbanner">' + scenes.map(function (s) { return '<button type="button" class="hb" ' + (s[3] || '') + ' aria-label="' + esc(s[2]) + '">' + bannerSvg(theme, s[0], s[1]) + '<span>' + esc(s[2]) + '</span></button>'; }).join('') + '</div>';
 }
+
+// ---------- Ask AI: search by photo (lens), voice or words; Claude chats and finds answers in the app ----------
+S.ai = S.ai || { msgs: [], busy: false, img: null, imgUrl: '' };
+function aiWords(q) { return String(q || '').toLowerCase().split(/[^a-z0-9À-￿]+/).filter(function (w) { return w.length > 2 && !/^(the|and|for|with|near|lost|found|my|was|have|from|that|this|any|some)$/.test(w); }); }
+function aiScore(r, q) { var w = aiWords(q); if (!w.length) return 1; var t = [r.title, r.desc, r.cat, r.place, r.atype, r.pkind, r.ltype, r.name, r.tagline].join(' ').toLowerCase(), n = 0; w.forEach(function (x) { if (t.indexOf(x) >= 0) n++; }); return n / w.length; }
+function aiCenter(near) {
+  if (near) { var m = matches(String(near)).filter(function (x) { return !x.none && x.lat != null; })[0]; if (m) return { lat: m.lat, lon: m.lon, name: m.title }; }
+  return propCenter() || { lat: S.region.lat, lon: S.region.lon, name: S.region.name };
+}
+function aiKm(c, r) { return Math.round(dist(c, r) * 10) / 10; }
+var aiFound = [];
+var AI_TOOLS = [
+  { name: 'search_lost_found', description: 'Search lost and found reports posted in the app. Returns up to 8 matches with id, kind (lost/found), title, category, place, distance in km and how long ago. Use for any lost item, found item, pet or missing person.',
+    inputSchema: { type: 'object', properties: { text: { type: 'string', description: 'What to look for, e.g. "black wallet" or "samsung phone blue case"' }, kind: { type: 'string', enum: ['lost', 'found', 'any'] }, category: { type: 'string', enum: CATS }, near: { type: 'string', description: 'Place name to search around (optional)' }, max_km: { type: 'number' } } },
+    execute: function (a) {
+      var c = aiCenter(a.near), km = +a.max_km || 50;
+      var l = openReports().filter(function (r) { return (!a.kind || a.kind === 'any' || r.kind === a.kind) && (!a.category || r.cat === a.category); })
+        .map(function (r) { return { r: r, s: aiScore(r, a.text) + (a.category && r.cat === a.category ? 0.5 : 0), d: aiKm(c, r) }; })
+        .filter(function (x) { return x.d <= km && (x.s > 0 || !a.text); }).sort(function (x, y) { return y.s - x.s || x.d - y.d; }).slice(0, 8);
+      l.forEach(function (x) { aiFound.push(x.r.id); });
+      return { searched_around: c.name, results: l.map(function (x) { return { id: x.r.id, kind: x.r.kind, title: x.r.title, category: x.r.cat, place: x.r.place || areaName(x.r.lat, x.r.lon), km: x.d, posted: ago(x.r.createdAt || Date.now()), example: !!x.r.example }; }) };
+    } },
+  { name: 'search_property', description: 'Search property listings (land, rentals, houses, apartments, shops, offices, rooms). Prices are in each listing\'s own currency. Returns up to 8 matches with id, title, deal, kind, price, currency, place and distance in km, cheapest first unless asked otherwise.',
+    inputSchema: { type: 'object', properties: { text: { type: 'string' }, deal: { type: 'string', enum: ['To let', 'For sale', 'Short stay', 'any'] }, kind: { type: 'string', enum: PKINDS.concat(['any']) }, min_price: { type: 'number' }, max_price: { type: 'number' }, near: { type: 'string' }, max_km: { type: 'number' }, sort: { type: 'string', enum: ['price_low', 'price_high', 'nearest'] } } },
+    execute: function (a) {
+      var c = aiCenter(a.near), km = +a.max_km || 60;
+      var l = openListings().filter(function (r) { return (!a.deal || a.deal === 'any' || r.ltype === a.deal) && (!a.kind || a.kind === 'any' || pkindOf(r) === a.kind) && (!a.min_price || r.price >= a.min_price) && (!a.max_price || r.price <= a.max_price); })
+        .map(function (r) { return { r: r, s: aiScore(r, a.text), d: aiKm(c, r) }; }).filter(function (x) { return x.d <= km && (x.s > 0 || !a.text); });
+      l.sort(a.sort === 'nearest' ? function (x, y) { return x.d - y.d; } : a.sort === 'price_high' ? function (x, y) { return y.r.price - x.r.price; } : function (x, y) { return x.r.price - y.r.price; });
+      l = l.slice(0, 8); l.forEach(function (x) { aiFound.push(x.r.id); });
+      return { searched_around: c.name, results: l.map(function (x) { return { id: x.r.id, title: x.r.title, deal: x.r.ltype, kind: pkindOf(x.r), price: x.r.price, currency: x.r.cur || 'KES', period: x.r.period || '', bedrooms: x.r.beds, place: x.r.place || areaName(x.r.lat, x.r.lon), km: x.d, lister: x.r.who || 'Owner' }; }) };
+    } },
+  { name: 'safety_alerts', description: 'Recent community safety alerts (theft, mugging, flooding, road blocks, accidents) near a place, with type, severity, description, place and distance. Use when someone asks if an area is safe or what is happening.',
+    inputSchema: { type: 'object', properties: { near: { type: 'string' }, text: { type: 'string' }, max_km: { type: 'number' } } },
+    execute: function (a) {
+      var c = aiCenter(a.near), km = +a.max_km || 10;
+      var l = recentAlerts().map(function (x) { return { a: x, d: aiKm(c, x), s: aiScore(x, a.text) }; }).filter(function (x) { return x.d <= km && (x.s > 0 || !a.text); }).sort(function (x, y) { return x.d - y.d; }).slice(0, 8);
+      l.forEach(function (x) { aiFound.push('al:' + x.a.id); });
+      return { searched_around: c.name, alerts: l.map(function (x) { return { id: x.a.id, type: x.a.atype, severity: x.a.sev, description: x.a.desc, place: x.a.place || areaName(x.a.lat, x.a.lon), km: x.d, posted: ago(x.a.createdAt || Date.now()) }; }), emergency: emergencyLine() };
+    } },
+  { name: 'help_nearby', description: 'Places to get help: police, hospital, church, mosque, shelter, fire station. Returns places people added in the app (with distance and phone) and a Google Maps search link for the nearest ones, plus the emergency number.',
+    inputSchema: { type: 'object', properties: { type: { type: 'string', enum: ['police', 'hospital', 'church', 'mosque', 'shelter', 'fire'] }, near: { type: 'string' } }, required: ['type'] },
+    execute: function (a) {
+      var c = aiCenter(a.near), t = HELP_TYPES.filter(function (x) { return x[0] === a.type; })[0] || HELP_TYPES[0];
+      var l = helpPts.filter(function (h) { return h.type === t[0]; }).map(function (h) { return { name: h.name, phone: h.phone || '', km: aiKm(c, h) }; }).sort(function (x, y) { return x.km - y.km; }).slice(0, 5);
+      S.ai.links = (S.ai.links || []).concat([{ url: helpSearchUrl(t[2], c), label: 'Nearest ' + t[1].toLowerCase() + ' on Google Maps' }]);
+      return { searched_around: c.name, places: l, google_maps_link_shown_to_user: true, emergency: emergencyLine() };
+    } },
+  { name: 'start_report', description: 'Prepare a lost or found report for the user (they check it and set the location before posting). Use when nothing matches and the user wants to report, or asks you to post it.',
+    inputSchema: { type: 'object', properties: { kind: { type: 'string', enum: ['lost', 'found'] }, category: { type: 'string', enum: CATS }, title: { type: 'string' }, description: { type: 'string' } }, required: ['kind', 'title'] },
+    execute: function (a) { var f = newForm(a.kind === 'found' ? 'found' : 'lost'); if (CATS.indexOf(a.category) >= 0) f.cat = a.category; f.title = String(a.title || '').slice(0, 80); f.desc = String(a.description || '').slice(0, 600); S.ai.draft = f; return 'A "Post this report" button is now shown to the user.'; } }
+];
+function aiSystem() {
+  return 'You are the assistant inside Find & Found, an app for lost & found items, missing persons and pets, property (land, rentals, houses, apartments, shops), community safety alerts and help nearby. ' +
+    'The user is in ' + curCountry().name + ' around ' + (pin && place ? place.name : S.region.name) + '. Reply in ' + langName(S.lang) + '. ' +
+    'Always use the tools to look things up in the app before answering; never invent posts, prices or places. The app shows the items you found as tappable cards under your reply, so refer to them briefly instead of repeating every detail. ' +
+    'If a photo is attached, first say what the item is, then search for it. If nothing matches, say so and offer to prepare a report with start_report. Give practical next steps (meet in public, never pay before seeing an item, check IMEI/serial, contact the owner/agent through the app). ' +
+    'For emergencies tell them: ' + emergencyLine() + ' Keep replies short (2–5 sentences). Items marked example are demo posts — say so.';
+}
+function aiSend(text) {
+  text = String(text || '').trim(); var m = S.ai;
+  if (m.busy) return; if (!text && !m.img) return;
+  if (!sampleCap) { toast('Ask AI works when Find & Found is opened inside Claude.'); return; }
+  var img = m.img, imgUrl = m.imgUrl; m.img = null; m.imgUrl = '';
+  m.msgs.push({ role: 'user', text: text || 'What is this? Find it in the app.', imgUrl: imgUrl });
+  var reply = { role: 'assistant', text: '', cards: [], links: [] }; m.msgs.push(reply); m.busy = true; aiFound = []; m.links = []; m.draft = null;
+  renderAi();
+  var turns = [{ role: 'user', content: aiSystem() + '\n\nReady?' }, { role: 'assistant', content: 'Ready. How can I help?' }];
+  m.msgs.slice(0, -1).forEach(function (x) { if (x.text) turns.push({ role: x.role, content: x.text }); });
+  var opts = { tools: AI_TOOLS, cache: false, onText: function (u) { reply.text = u.text; var el = document.querySelector('.aimsg.last .aitext'); if (el) el.textContent = u.text; aiScroll(); } };
+  var go = function (blobs) { if (blobs) opts.images = blobs; return sampleCap(turns, opts); };
+  (img ? toJpeg(img).then(function (b) { return go([b]); }) : go(null)).then(function (res) {
+    reply.text = res && res.text ? res.text : reply.text; finish();
+  }, function (e) {
+    var code = (e && e.code) || 'error';
+    reply.text = (e && e.text ? e.text + '\n\n' : '') + (SCAN_MSG[code] || 'Sorry — that didn’t work. Try again in a moment.') + ' (' + code + ')'; finish();
+  });
+  function finish() {
+    var seen = {}; reply.cards = aiFound.filter(function (id) { if (seen[id]) return false; seen[id] = 1; return true; }).slice(0, 8);
+    reply.links = m.links || []; reply.draft = m.draft; m.busy = false; renderAi();
+  }
+}
+function aiCardHtml(id) {
+  if (String(id).indexOf('al:') === 0) { var a = alerts.filter(function (x) { return x.id === id.slice(3); })[0]; if (!a) return ''; return '<button class="aicard" data-a="aiopen" data-id="' + esc(id) + '"><span class="aith al">' + svg('alert', 18, 2.2) + '</span><span class="grow"><b>' + esc(a.atype) + '</b><span class="small muted">' + esc(a.place || areaName(a.lat, a.lon)) + ' · ' + esc(ago(a.createdAt || Date.now())) + '</span></span></button>'; }
+  var r = itemById(id); if (!r) return ''; var L = isListing(r);
+  return '<button class="aicard" data-a="aiopen" data-id="' + esc(id) + '"><span class="aith ' + (L ? 'pr' : r.kind) + '">' + (r.photoId ? imgHtml(r.photoId, '', '', r.sensitive) : bannerSvg(L ? 'prop' : r.kind === 'found' ? 'found' : 'lost', L ? pkindOf(r) : 'item', r.cat)) + '</span><span class="grow"><b>' + esc(r.title) + '</b><span class="small muted">' + (L ? esc(kes(r.price, r.cur)) + ' · ' : esc(r.kind === 'found' ? 'Found' : 'Lost') + ' · ') + esc(r.place || areaName(r.lat, r.lon)) + (r.example ? ' · Example' : '') + '</span></span></button>';
+}
+function aiMsgsHtml() {
+  var m = S.ai;
+  if (!m.msgs.length) return '<div class="aiempty"><b>Ask me anything about Find &amp; Found</b><div class="aisugg">' + ['I lost a black wallet near Westlands', 'Find a 2-bedroom to let under KSh 50,000', 'Is it safe around the CBD tonight?', 'Nearest police station', 'I found a phone, what do I do?'].map(function (q) { return '<button class="chip" data-a="aiq" data-q="' + esc(q) + '">' + esc(q) + '</button>'; }).join('') + '</div><p class="small muted">Use the lens to search with a photo, or the mic to speak.</p></div>';
+  return m.msgs.map(function (x, i) {
+    var last = i === m.msgs.length - 1;
+    return '<div class="aimsg ' + x.role + (last ? ' last' : '') + '">' + (x.imgUrl ? '<img class="aiimg" src="' + esc(x.imgUrl) + '" alt="Your photo">' : '') + '<div class="aitext">' + esc(x.text || (m.busy && last ? 'Looking…' : '')) + '</div>' +
+      (x.cards && x.cards.length ? '<div class="aicards">' + x.cards.map(aiCardHtml).join('') + '</div>' : '') +
+      (x.links && x.links.length ? x.links.map(function (l) { return '<a class="btn sm" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + ' ↗</a>'; }).join('') : '') +
+      (x.draft ? '<button class="btn primary" data-a="aidraft" data-i="' + i + '">Post this report</button>' : '') + '</div>';
+  }).join('') + (m.busy ? '<div class="small muted aibusy">Searching the app…</div>' : '');
+}
+function aiScroll() { var b = $('aibody'); if (b) b.scrollTop = b.scrollHeight; }
+function renderAi() { var b = $('aibody'); if (S.modal && S.modal.type === 'ai' && b) { b.innerHTML = aiMsgsHtml(); aiScroll(); var pv = $('aipv'); if (pv) pv.innerHTML = S.ai.imgUrl ? '<img src="' + esc(S.ai.imgUrl) + '" alt="Photo to search"><button class="btn link sm" data-a="aiimgx">Remove</button>' : ''; var s = $('aisend'); if (s) s.disabled = S.ai.busy; var ai0 = $('ai-in'); if (ai0 && !S.ai.img) ai0.placeholder = 'Describe what you’re looking for…'; } else if (S.modal && S.modal.type === 'ai') renderModal(); }
+XMODAL.ai = function (m, head) {
+  return '<div class="aihead"><div><h2 style="margin:0">Ask AI</h2><div class="small muted">Search Find &amp; Found by photo, voice or words</div></div><div class="row" style="gap:6px">' + (S.ai.msgs.length ? '<button class="btn sm" data-a="aiclear">New chat</button>' : '') + '<button class="btn sm" data-a="mclose" aria-label="Close">✕</button></div></div>' +
+    '<div id="aibody" class="aibody">' + aiMsgsHtml() + '</div>' +
+    '<div id="aipv" class="aipv">' + (S.ai.imgUrl ? '<img src="' + esc(S.ai.imgUrl) + '" alt="Photo to search"><button class="btn link sm" data-a="aiimgx">Remove</button>' : '') + '</div>' +
+    '<form id="aiform" class="aiform"><label class="aiic" title="Search with a photo" aria-label="Search with a photo">' + ic(I2.scan, 22, 2.2) + '<input type="file" id="ai-file" accept="image/*" hidden></label><button type="button" class="aiic" data-a="aimic" aria-label="Speak">' + ic(I2.mic, 22, 2.2) + '</button><input id="ai-in" autocomplete="off" placeholder="Describe what you’re looking for…"><button class="btn primary" id="aisend" type="submit"' + (S.ai.busy ? ' disabled' : '') + '>Send</button></form>' +
+    (sampleCap ? '' : '<div class="note warn">Ask AI uses Claude, so it works when this page is opened inside Claude.</div>');
+};
+XAFTER.ai = function () { aiScroll(); var i = $('ai-in'); if (i && !('ontouchstart' in window)) i.focus(); };
+function openAi(opts) { openModal('ai'); if (opts && opts.lens) setTimeout(function () { var f = $('ai-file'); if (f) f.click(); }, 50); if (opts && opts.voice) aiVoice(); if (opts && opts.q) aiSend(opts.q); }
+function aiVoice() {
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { toast('Voice isn’t available here. Use the microphone on your keyboard instead.'); var i = $('ai-in'); if (i) i.focus(); return; }
+  try { var rec = new SR(); rec.lang = locale(); rec.interimResults = true; rec.onresult = function (ev) { var t = ''; for (var k = 0; k < ev.results.length; k++) t += ev.results[k][0].transcript; var i = $('ai-in'); if (i) i.value = t; if (ev.results[ev.results.length - 1].isFinal) aiSend(t); }; rec.onerror = function () { toast('Voice didn’t work here. Use the microphone on your keyboard instead.'); }; rec.start(); toast('Listening… speak now'); } catch (x) { toast('Voice isn’t available here. Use the microphone on your keyboard instead.'); }
+}
+if (window.FFAuth) document.documentElement.classList.add('noai');
+XCLICK.ai = function () { openAi(); };
+XCLICK.ailens = function () { openAi({ lens: true }); };
+XCLICK.aimic = function () { if (!S.modal || S.modal.type !== 'ai') openAi({ voice: true }); else aiVoice(); };
+XCLICK.aiq = function (b) { aiSend(b.getAttribute('data-q')); };
+XCLICK.aiclear = function () { S.ai = { msgs: [], busy: false, img: null, imgUrl: '' }; renderModal(); };
+XCLICK.aiimgx = function () { S.ai.img = null; S.ai.imgUrl = ''; renderAi(); };
+XCLICK.aiopen = function (b) {
+  var id = b.getAttribute('data-id'); closeModal();
+  var t = document.createElement('button'); t.hidden = true;
+  if (id.indexOf('al:') === 0) { t.setAttribute('data-a', 'alopen'); t.setAttribute('data-id', id.slice(3)); } else { t.setAttribute('data-a', 'open'); t.setAttribute('data-id', id); }
+  document.body.appendChild(t); t.click(); t.remove();
+};
+XCLICK.aidraft = function (b) { var x = S.ai.msgs[+b.getAttribute('data-i')]; if (!x || !x.draft) return; closeModal(); S.prefill = x.draft; if (!needPin('report')) { toHero(); S.form = x.draft; S.prefill = null; go('report'); } };
+XCHANGE['ai-file'] = function (t) { var f = t.files && t.files[0]; if (!f) return; S.ai.img = f; try { S.ai.imgUrl = URL.createObjectURL(f); } catch (e) { S.ai.imgUrl = ''; } renderAi(); var i = $('ai-in'); if (i && !i.value) i.placeholder = 'Add a few words (optional), then Send'; };
+XINPUT['ai-in'] = function () {};
+
+
+// ---------- one search box for places AND everything posted in the app ----------
+function hitScore(r, q) {
+  var w = aiWords(q); if (!w.length) return 0;
+  var t = [r.title, r.desc, r.cat, r.place, r.atype, r.pkind, r.ltype, r.name, r.tagline, r.type, r.kind].join(' ').toLowerCase(), n = 0;
+  w.forEach(function (x) { if (t.indexOf(x) >= 0) n++; else if (x.length > 4 && t.indexOf(x.slice(0, -1)) >= 0) n += 0.7; });
+  return n / w.length;
+}
+function contentHits(q) {
+  q = String(q || '').trim(); if (q.length < 3 || /^-?\d+(\.\d+)?\s*,/.test(q) || /^https?:/i.test(q)) return { n: 0, html: '', first: null };
+  var c = pin || { lat: S.region.lat, lon: S.region.lon };
+  var pick = function (list, min) { return list.map(function (r) { return { r: r, s: hitScore(r, q), d: r.lat != null ? dist(c, r) : 0 }; }).filter(function (x) { return x.s >= (min || 0.5); }).sort(function (a, b) { return b.s - a.s || a.d - b.d; }).slice(0, 3); };
+  var groups = [
+    ['Lost & Found', pick(openReports()), function (r) { return { a: 'aiopen', id: r.id, t: r.title, sub: (r.kind === 'found' ? 'Found' : 'Lost') + ' · ' + (r.cat || '') + ' · ' + (r.place || areaName(r.lat, r.lon)), dot: r.kind === 'found' ? '#1E9E4A' : '#D92D20' }; }],
+    ['Property', pick(openListings()), function (r) { return { a: 'aiopen', id: r.id, t: r.title, sub: kes(r.price, r.cur) + ' · ' + r.ltype + ' · ' + (r.place || areaName(r.lat, r.lon)), dot: '#1650C8' }; }],
+    ['Alerts', pick(recentAlerts()), function (r) { return { a: 'aiopen', id: 'al:' + r.id, t: r.atype, sub: (r.sev || '') + ' · ' + (r.place || areaName(r.lat, r.lon)) + ' · ' + ago(r.createdAt || Date.now()), dot: '#E08A00' }; }],
+    ['Help places', pick(helpPts.map(function (h) { var t = HELP_TYPES.filter(function (x) { return x[0] === h.type; })[0]; return Object.assign({ title: h.name, kind: t ? t[1] + ' ' + t[2] : h.type }, h); })), function (r) { return { a: 'helpmap', id: r.id, t: r.name, sub: r.kind + (r.phone ? ' · ' + r.phone : ''), dot: '#1E9E4A' }; }],
+    ['Ads', pick(localAds()), function (r) { return { a: 'adgo', id: r.id, t: r.name, sub: r.cat + ' · ' + (r.tagline || ''), dot: '#7A3FD1' }; }]
+  ];
+  var n = 0, first = null, html = '';
+  groups.forEach(function (g) {
+    if (!g[1].length) return;
+    html += '<div class="sughd">' + g[0] + '</div>' + g[1].map(function (x) { var h = g[2](x.r); n++; if (!first) first = h; return '<button class="sug" data-a="' + h.a + '" data-id="' + esc(h.id) + '"><span class="b" style="font-size:14px;display:flex;align-items:center;gap:7px"><span class="sdot" style="background:' + h.dot + '"></span>' + esc(h.t) + (x.r.example ? ' <span class="small muted">· Example</span>' : '') + '</span><span class="small muted">' + esc(h.sub) + (x.d ? ' · ' + fmt(x.d * 1000) : '') + '</span></button>'; }).join('');
+  });
+  // the help types themselves: "police", "hospital", "mosque"...
+  var lq = q.toLowerCase(); HELP_TYPES.forEach(function (t) { if (t[1].toLowerCase().indexOf(lq) >= 0 || t[2].indexOf(lq) >= 0 || lq.indexOf(t[0]) >= 0) { n++; if (!first) first = { a: 'helptype2', id: t[0] }; html += '<div class="sughd">Get help</div><button class="sug" data-a="helptype2" data-id="' + t[0] + '"><span class="b" style="font-size:14px">Nearest ' + esc(t[1].toLowerCase()) + '</span><span class="small muted">Places people added + Google Maps</span></button>'; } });
+  if (n) html += '<button class="sug aisug" data-a="aiq2" data-q="' + esc(q) + '"><span class="b" style="font-size:14px">Ask AI about “' + esc(q) + '”</span><span class="small muted">Search everything with Claude</span></button>';
+  return { n: n, html: html, first: first };
+}
+function matchesPlaceExactly(q, s) { return String(s.title || '').toLowerCase().indexOf(String(q).trim().toLowerCase()) === 0; }
+function hitGo(h) {
+  S.showSug = false; S.query = '';
+  var t = document.createElement('button'); t.hidden = true; t.setAttribute('data-a', h.a); t.setAttribute('data-id', h.id); document.body.appendChild(t); t.click(); t.remove();
+}
+XCLICK.adgo = function (b) { S.showSug = false; renderUI(); S.adTab = 'ads'; renderHubs(); scrollToId('ads'); };
+XCLICK.helptype2 = function (b) { S.showSug = false; renderUI(); S.helpType = b.getAttribute('data-id'); hubTo('alTab', 'help', 'alerts'); };
+XCLICK.aiq2 = function (b) { S.showSug = false; renderUI(); openAi({ q: b.getAttribute('data-q') }); };
+
+
+// ---------- each country sees its own area first ----------
+S.everywhere = lsGet('ff-everywhere', '') === '1';
+function inMyArea(r) {
+  if (S.everywhere || !r) return true;
+  if (r.ownerId && r.ownerId === myId) return true;
+  var cc = curCountry().cc;
+  if (r.cc) return r.cc === cc;
+  return r.lat != null && dist({ lat: S.region.lat, lon: S.region.lon }, r) < 400;
+}
+function openReports() { return reports.filter(function (r) { return r.status !== 'resolved' && !hiddenPost(r) && inMyArea(r); }); }
+function openListings() { return listings.filter(function (r) { return r.status !== 'closed' && !hiddenPost(r) && inMyArea(r); }); }
+function recentAlerts() { var cut = Date.now() - ALERT_DAYS * DAY; return alerts.filter(function (a) { return (a.createdAt || 0) >= cut && !hiddenPost(a) && inMyArea(a); }); }
+function areaBar(kind) {
+  var all = kind === 'prop' ? listings.length : kind === 'alerts' ? alerts.length : reports.length;
+  var mine = kind === 'prop' ? openListings().length : kind === 'alerts' ? recentAlerts().length : openReports().length;
+  var hidden = !S.everywhere && all > mine;
+  return '<div class="areabar">' + svg('pin', 15, 2.2) + '<span>' + (S.everywhere ? 'Showing posts from <b>every country</b>' : 'Showing posts in <b>' + esc(curCountry().name) + '</b>') + '</span>' +
+    (S.everywhere ? '<button class="btn link sm" data-a="everywhere" data-v="0">Only ' + esc(curCountry().name) + '</button>' : (hidden ? '<button class="btn link sm" data-a="everywhere" data-v="1">See other countries too</button>' : '')) +
+    '<button class="btn link sm" data-a="region">Change country</button></div>';
+}
+XCLICK.everywhere = function (b) { S.everywhere = b.getAttribute('data-v') === '1'; lsSet('ff-everywhere', S.everywhere ? '1' : ''); renderUI(); renderSections(); kick(); };
+
+
+// ---------- data follows the place you're looking at ----------
+var ccMemo = {};
+function countryAt(lat, lon) {
+  if (lat == null) return null; var k = lat.toFixed(2) + ',' + lon.toFixed(2); if (k in ccMemo) return ccMemo[k];
+  var n = gzNearest(lat, lon, 300); var cc = n && n.o.c2 ? n.o.c2 : null; if (GZ) ccMemo[k] = cc; return cc;
+}
+function focusPoint() { return pin && S.phase === 'local' ? { lat: pin.lat, lon: pin.lon, name: place ? place.name : '' } : { lat: S.region.lat, lon: S.region.lon, name: S.region.name }; }
+function focusCC() { var f = focusPoint(); return (pin && S.phase === 'local' ? countryAt(f.lat, f.lon) : null) || S.region.cc || S.cc; }
+function focusCountryName() { var cc = focusCC(), c = countryOf(cc); if (c) return c.name; if (GZ) { for (var k in GZ_COUNTRIES) if (GZ_COUNTRIES[k][2] === cc) return GZ_COUNTRIES[k][0]; } return cc; }
+var GZ_COUNTRIES = {};
+function curCountry() { var cc = focusCC(); return countryOf(cc) || { cc: cc, name: focusCountryName(), lang: 'en', cur: 'USD', sos: '', lat: S.region.lat, lon: S.region.lon, city: S.region.name }; }
+function homeCountry() { return countryOf(S.region.cc || S.cc) || countryOf('KE'); }
+function postCC(r) { return r.cc || countryAt(r.lat, r.lon); }
+function inMyArea(r) {
+  if (S.everywhere || !r) return true;
+  if (r.ownerId && r.ownerId === myId) return true;
+  var cc = focusCC(), pc = postCC(r);
+  if (pc) return pc === cc;
+  var f = focusPoint(); return r.lat != null && dist(f, r) < 400;
+}
+function areaBar(kind) {
+  var all = kind === 'prop' ? listings.length : kind === 'alerts' ? alerts.length : reports.length;
+  var mine = kind === 'prop' ? openListings().length : kind === 'alerts' ? recentAlerts().length : openReports().length;
+  var away = focusCC() !== (S.region.cc || S.cc), f = focusPoint();
+  return '<div class="areabar">' + svg('pin', 15, 2.2) + '<span>' + (S.everywhere ? 'Showing posts from <b>every country</b>' : 'Showing posts in <b>' + esc(curCountry().name) + '</b>' + (pin && S.phase === 'local' && f.name ? ' · nearest to ' + esc(String(f.name).replace(/\.$/, '')) : '')) + '</span>' +
+    (away && !S.everywhere ? '<button class="btn link sm" data-a="gohome">Back to ' + esc(homeCountry().name) + '</button>' : '') +
+    (S.everywhere ? '<button class="btn link sm" data-a="everywhere" data-v="0">Only ' + esc(curCountry().name) + '</button>' : (all > mine ? '<button class="btn link sm" data-a="everywhere" data-v="1">All countries</button>' : '')) +
+    '<button class="btn link sm" data-a="pickplace">Look somewhere else</button></div>';
+}
+XCLICK.gohome = function () { var r = S.region; pin = null; S.phase = 'local'; S.pickAfter = null; toHero(); flyTo(describe(r.lat, r.lon, 'manual', { name: r.name })); toast('Back to ' + homeCountry().name + '.'); };
+XCLICK.pickplace = function () { toHero(); setTimeout(function () { var q = $('q'); if (q) { q.focus(); q.select && q.select(); } }, 400); toast('Type a place, paste a map link, or drop a pin — the posts follow.'); };
+// sort lists nearest to the place you're looking at
+var lastFocusCC = null;
+setInterval(function () { var cc = focusCC(); if (lastFocusCC && cc && cc !== lastFocusCC && !S.everywhere) { toast('Now showing ' + curCountry().name + '.'); renderSections(); renderUI(); } if (cc) lastFocusCC = cc; }, 800);
+
+// ---------- example posts that match the place you're looking at ----------
+// When a country has no real posts yet, the app shows labelled examples placed in nearby real
+// towns, priced in the local currency. They live only on the screen — never saved.
+var FX = { USD: 1, GBP: 0.79, EUR: 0.92, CAD: 1.37, AUD: 1.52, NZD: 1.68, JPY: 150, CNY: 7.2, INR: 84, PKR: 280, BDT: 120, LKR: 300, NPR: 135, KRW: 1350, PHP: 57, IDR: 16000, MYR: 4.5, SGD: 1.34, THB: 35, VND: 25000, SAR: 3.75, AED: 3.67, QAR: 3.64, KWD: 0.31, ILS: 3.7, JOD: 0.71, IRR: 42000, EGP: 49, MAD: 10, DZD: 135, TND: 3.1, NGN: 1600, GHS: 15, XAF: 600, XOF: 600, ZAR: 18, NAD: 18, BWP: 13.5, ZMW: 27, MWK: 1750, MZN: 64, AOA: 900, UGX: 3700, TZS: 2600, RWF: 1350, BIF: 2900, ETB: 120, SOS: 570, SDG: 600, CDF: 2800, KES: 129.9, MXN: 18, BRL: 5.6, ARS: 1000, CLP: 950, COP: 4100, PEN: 3.75, CHF: 0.88, SEK: 10.5, NOK: 10.8, DKK: 6.9, PLN: 4, CZK: 23, TRY: 34, RUB: 95, UAH: 41 };
+var HIGH = /^(US|CA|GB|IE|FR|DE|IT|ES|PT|NL|BE|CH|AT|SE|NO|DK|FI|AU|NZ|JP|KR|SG|IL|AE|QA|KW|SA|LU|IS)$/, MID = /^(MX|BR|AR|CL|CO|PE|PL|CZ|GR|TR|RU|CN|MY|TH|ZA|BW|NA|JO|IR|DZ|TN|MA|EG|UA)$/;
+function gxLevel(cc) { return HIGH.test(cc) ? 1 : MID.test(cc) ? 0.4 : 0.18; }
+function gxPrice(usd, cc, cur) { var v = usd * gxLevel(cc) * (FX[cur] || 1), m = Math.pow(10, Math.max(0, Math.floor(Math.log10(v)) - 1)); return Math.round(v / m) * m; }
+function gxRand(seed) { var x = 0; for (var i = 0; i < seed.length; i++) x = (x * 31 + seed.charCodeAt(i)) >>> 0; return function () { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; }; }
+function gxTowns(f, cc, n) {
+  if (!GZ) return [];
+  var kx = Math.cos(f.lat * D2R), out = [], seen = {};
+  GZ.map(function (o) { var dx = (o.lon - f.lon) * kx, dy = o.lat - f.lat; return { o: o, d: Math.sqrt(dx * dx + dy * dy) * 111.2 }; })
+    .filter(function (x) { return x.d < 60 && (!x.o.c2 || x.o.c2 === cc); }).sort(function (a, b) { return a.d - b.d; })
+    .forEach(function (x) { if (out.length < n && !seen[x.o.name]) { seen[x.o.name] = 1; out.push(x.o); } });
+  if (!out.length) out.push({ name: f.name || curCountry().city, lat: f.lat, lon: f.lon });
+  return out;
+}
+var GX = { key: '', reports: [], listings: [], alerts: [] };
+var GX_LF = [['lost', 'Phone', 'Black smartphone with a cracked screen'], ['found', 'Keys', 'Bunch of house keys on a blue lanyard'], ['lost', 'Wallet', 'Brown leather wallet with bank cards'], ['found', 'ID card', 'Driving licence found at the bus stop'], ['lost', 'Pet', 'Grey cat with a red collar'], ['found', 'Backpack', 'Black laptop backpack left on a bench'], ['lost', 'Laptop', 'Silver laptop in a grey sleeve'], ['found', 'Glasses', 'Prescription glasses in a black case'], ['lost', 'Keys', 'Car key with a small torch keyring'], ['found', 'Phone', 'Phone in a pink case found in a taxi'], ['lost', 'Umbrella', 'Large green umbrella with wooden handle'], ['found', 'Pet', 'Friendly brown dog, no collar']];
+var GX_PR = [['To let', 'Apartment', '2-bedroom flat near the station', 1800, 'per month', '2'], ['To let', 'Room', 'Furnished room, bills included', 700, 'per month', 'Studio'], ['For sale', 'House', '3-bedroom family house with garden', 450000, 'asking', '3'], ['For sale', 'Land', 'Building plot with planning permission', 120000, 'asking', 'n/a'], ['To let', 'Shop', 'High-street shop unit', 2500, 'per month', 'n/a'], ['Short stay', 'Apartment', 'Modern studio for short stays', 90, 'per night', 'Studio'], ['To let', 'House', '4-bedroom house with parking', 3200, 'per month', '4'], ['For sale', 'Apartment', '1-bedroom apartment with balcony', 220000, 'asking', '1'], ['To let', 'Office', 'Small office with meeting room', 1500, 'per month', 'n/a'], ['For sale', 'Land', 'Farm land with water access', 60000, 'asking', 'n/a'], ['Short stay', 'House', 'Holiday cottage, sleeps 6', 160, 'per night', '3'], ['To let', 'Apartment', 'Studio flat close to shops', 1100, 'per month', 'Studio']];
+var GX_AL = [['Theft', 'high', 'Bags snatched near the market after dark.'], ['Road block', 'low', 'Road works, one lane closed this week.'], ['Flooding', 'medium', 'Underpass floods after heavy rain.'], ['Accident', 'medium', 'Collision at the roundabout, traffic slow.'], ['Mugging', 'high', 'Two people robbed near the footbridge at night.'], ['Power outage', 'low', 'Power cut across the estate since morning.']];
+function gxBuild() {
+  var cc = focusCC(), f = focusPoint(); if (!cc || !GZ) return;
+  var c = curCountry(), cur = FX[c.cur] ? c.cur : 'USD', towns = gxTowns(f, cc, 14), rnd = gxRand(cc + towns[0].name), now = Date.now(), H = 3600000;
+  var at = function (i) { var t = towns[i % towns.length]; return { lat: t.lat + (rnd() - 0.5) * 0.012, lon: t.lon + (rnd() - 0.5) * 0.012, place: t.name }; };
+  var real = function (arr) { return arr.some(function (r) { return !r.gx && postCC(r) === cc; }); };
+  var D = 'This is an example post that shows how Find & Found works here. It is not a real item.';
+  GX.reports = real(reports) ? [] : GX_LF.map(function (x, i) { var p = at(i); return { id: 'gx-' + cc + '-lf' + i, gx: true, example: true, kind: x[0], cat: x[1], title: 'Example · ' + x[2], desc: D, lat: p.lat, lon: p.lon, place: p.place, radius: 300, status: 'open', ownerId: null, photoId: null, cc: cc, createdAt: now - (i * 4 + 2) * H }; });
+  GX.listings = real(listings) ? [] : GX_PR.map(function (x, i) { var p = at(i + 2); return { id: 'gx-' + cc + '-pr' + i, gx: true, example: true, ltype: x[0], pkind: x[1], title: 'Example · ' + x[2], desc: D, price: gxPrice(x[3], cc, cur), cur: cur, period: x[4], beds: x[5], who: i % 2 ? 'Agent' : 'Owner', lat: p.lat, lon: p.lon, place: p.place, status: 'open', ownerId: null, photoId: null, cc: cc, createdAt: now - (i * 7 + 3) * H }; });
+  GX.alerts = real(alerts) ? [] : GX_AL.map(function (x, i) { var p = at(i + 4); return { id: 'gx-' + cc + '-al' + i, gx: true, example: true, atype: x[0], sev: x[1], desc: 'Example: ' + x[2] + ' Not a real alert.', lat: p.lat, lon: p.lon, place: p.place, radius: 300, confirms: [], ownerId: null, cc: cc, createdAt: now - (i * 9 + 4) * H }; });
+}
+function gxApply() {
+  var cc = focusCC(), fp = focusPoint(), key = cc + '|' + Math.round(fp.lat * 2) + ',' + Math.round(fp.lon * 2) + '|' + (GZ ? 1 : 0) + '|' + reports.filter(function (r) { return !r.gx; }).length + '|' + listings.filter(function (r) { return !r.gx; }).length + '|' + alerts.filter(function (r) { return !r.gx; }).length;
+  if (key === GX.key) return; GX.key = key; gxBuild();
+  reports = reports.filter(function (r) { return !r.gx; }).concat(GX.reports);
+  listings = listings.filter(function (r) { return !r.gx; }).concat(GX.listings);
+  alerts = alerts.filter(function (r) { return !r.gx; }).concat(GX.alerts);
+  scheduleSections(); scheduleUI(); kick();
+}
+setInterval(gxApply, 700);
+
+// ---------- restricted & sensitive zones: masked on the map, no posts inside ----------
+// Approximate centres with generous radii. The owner can add or correct zones in the database (collection "zones").
+var ZONES = [
+  ['State House, Nairobi', -1.2808, 36.8061, 900, 'Presidential facility'],
+  ['Harambee House', -1.2865, 36.8236, 250, 'Government office'],
+  ['KICC area', -1.2884, 36.8233, 300, 'Protected area'],
+  ['Central Bank of Kenya area', -1.2894, 36.8195, 250, 'Protected area'],
+  ['Moi Air Base, Eastleigh', -1.2773, 36.8625, 1500, 'Military'],
+  ['Langata Barracks', -1.3218, 36.7905, 1200, 'Military'],
+  ['Kahawa Garrison', -1.1850, 36.9230, 2200, 'Military'],
+  ['Defence Headquarters', -1.2965, 36.7905, 400, 'Military'],
+  ['DCI Headquarters', -1.2441, 36.8500, 400, 'Police'],
+  ['KEMRI', -1.3053, 36.7990, 400, 'Protected institution'],
+  ['UN offices, Gigiri', -1.2338, 36.8148, 900, 'International organisation / embassies'],
+  ['Jomo Kenyatta International Airport', -1.3192, 36.9278, 3000, 'Airport'],
+  ['Wilson Airport', -1.3217, 36.8148, 1500, 'Airport'],
+  ['Moi International Airport, Mombasa', -4.0348, 39.5942, 2500, 'Airport'],
+  ['Mtongwe Naval Base', -4.0880, 39.6530, 1500, 'Military'],
+  ['Laikipia Air Base, Nanyuki', -0.0670, 37.0410, 2500, 'Military'],
+  ['Kisumu International Airport', -0.0861, 34.7289, 2000, 'Airport'],
+  ['Eldoret International Airport', 0.4045, 35.2389, 2000, 'Airport']
+].map(function (z) { return { name: z[0], lat: z[1], lon: z[2], r: z[3], kind: z[4] }; });
+var dbZones = [];
+function allZones() { return ZONES.concat(dbZones); }
+function zoneAt(p) { if (!p || p.lat == null) return null; var zs = allZones(); for (var i = 0; i < zs.length; i++) if (dist(zs[i], p) * 1000 <= zs[i].r) return zs[i]; return null; }
+function hiddenPost(r) { if (!r) return false; if (r.lat != null && !r.gx && r.ownerId !== myId && !isAdmin && zoneAt(r)) return true; return (r.reportsBy || []).length >= 3 && !isAdmin && r.ownerId !== myId; }
+function zoneBlock(f) { var z = zoneAt(pin); if (!z) return false; var msg = 'You can’t post inside a restricted area (' + z.name + ' · ' + z.kind + '). Move the pin outside the shaded zone.'; if (f) f.err = msg; toast(msg); renderSections(); renderUI(); return true; }
+function drawZones(pxKm, R) {
+  var path = document.getElementById('rz'), lab = document.getElementById('rz-lab'); if (!path) return;
+  if (S.phase !== 'local' || R < 300) { path.setAttribute('d', ''); lab.innerHTML = ''; return; }
+  var d = [], labs = [];
+  allZones().forEach(function (z) {
+    var q = proj(z.lat, z.lon); if (q.z <= 0) return; var r = z.r / 1000 * pxKm;
+    if (q.x + r < -50 || q.x - r > G.W + 50 || q.y + r < -50 || q.y - r > G.H + 50) return;
+    d.push(circlePath(q.x, q.y, Math.max(6, r)));
+    if (r > 26) labs.push('<text x="' + q.x.toFixed(0) + '" y="' + q.y.toFixed(0) + '" text-anchor="middle" class="rz-t">Restricted area</text><text x="' + q.x.toFixed(0) + '" y="' + (q.y + 15).toFixed(0) + '" text-anchor="middle" class="rz-s">' + esc(z.kind) + '</text>');
+  });
+  path.setAttribute('d', d.join('')); lab.innerHTML = labs.join('');
+}
+var DATA_LAWS = { KE: 'Data Protection Act, 2019 (regulator: ODPC)', UG: 'Data Protection and Privacy Act, 2019', TZ: 'Personal Data Protection Act, 2022', RW: 'Law on the protection of personal data and privacy (2021)', NG: 'Nigeria Data Protection Act, 2023', GH: 'Data Protection Act, 2012', ZA: 'Protection of Personal Information Act (POPIA)', EG: 'Personal Data Protection Law, 2020', MA: 'Law 09-08 on personal data', GB: 'UK GDPR and the Data Protection Act 2018', US: 'state privacy laws (such as California’s CCPA) and COPPA for children under 13', CA: 'PIPEDA and provincial privacy laws', BR: 'LGPD', IN: 'Digital Personal Data Protection Act, 2023', CN: 'Personal Information Protection Law (PIPL)', JP: 'Act on the Protection of Personal Information (APPI)', KR: 'Personal Information Protection Act (PIPA)', AU: 'Privacy Act 1988', SG: 'Personal Data Protection Act (PDPA)', AE: 'Federal Decree-Law 45 of 2021 on personal data', SA: 'Personal Data Protection Law' };
+var EU = /^(AT|BE|BG|HR|CY|CZ|DK|EE|FI|FR|DE|GR|HU|IE|IT|LV|LT|LU|MT|NL|PL|PT|RO|SK|SI|ES|SE|IS|LI|NO)$/;
+function dataLaw(cc) { return DATA_LAWS[cc] || (EU.test(cc) ? 'the EU General Data Protection Regulation (GDPR)' : 'your country’s privacy and data-protection laws'); }
+var DISCLAIMER = 'Find & Found is a platform where people post their own reports, listings, alerts and ads. We don’t own, check or guarantee any item, property, person, business or alert shown, and we aren’t responsible for deals or meetings between users. Example posts are not real. Distances, prices, conversions and risk rankings are approximate. Nothing here is legal, financial or safety advice. You are responsible for following the laws where you are. In an emergency, contact the local emergency services.';
+XMODAL.laws = function (m, head) {
+  var c = curCountry(), cc = c.cc;
+  return head('Using Find & Found within the law', 'Applies in every country. General guidance, not legal advice.') +
+    '<div class="laws">' +
+    '<div class="note">Showing rules for <b>' + esc(c.name) + '</b>. ' + esc(emergencyLine()) + ' <button class="btn link sm" data-a="region" style="display:inline">Change country</button></div>' +
+    '<h3>Never post — anywhere</h3><ul>' +
+    '<li><b>Restricted or sensitive places</b>: military bases and barracks, presidential and government buildings, police and prison premises, airports’ secure areas, embassies and UN offices, central banks and critical sites (power plants, dams, border posts). Most countries ban photographing or mapping them. Known zones are shaded on the map and posting inside them is blocked; photos of them are refused by the safety check.</li>' +
+    '<li><b>Other people’s personal details</b>: ID, passport or card numbers, phone numbers, home addresses, faces of strangers or children. Blur them. IMEI and serial numbers you enter stay private.</li>' +
+    '<li><b>Accusations against named people or businesses</b>. Describe what happened, not who you think did it.</li>' +
+    '<li><b>Explicit, hateful or violent content</b>, threats, or anything that incites violence or crime.</li>' +
+    '<li><b>Fake, stolen or misleading posts and ads</b>, or property you’re not allowed to market.</li>' +
+    '<li><b>Copyrighted photos or text</b> that aren’t yours.</li></ul>' +
+    '<h3>Do</h3><ul>' +
+    '<li><b>Found something?</b> Return it to the owner or hand it to the police — keeping found property is an offence in many countries. Keep the police reference number.</li>' +
+    '<li><b>Missing person?</b> Report to the police first, then post. For children, only share a photo with a parent’s or guardian’s consent.</li>' +
+    '<li><b>Listing property?</b> Only list what you own or are authorised to market, and hold any licence or registration agents need in your country' + (cc === 'KE' ? ' (in Kenya: the Estate Agents Registration Board)' : '') + '.</li>' +
+    '<li><b>Meet safely</b> in public places and never pay before you see the item or property.</li></ul>' +
+    '<h3>Your data in ' + esc(c.name) + '</h3><ul><li>Personal data is handled under ' + esc(dataLaw(cc)) + '. We collect only what’s needed, show locations approximately (more roughly for under-18s), keep identifiers private, and you can delete your posts at any time.</li></ul>' +
+    (cc === 'KE' ? '<h3>Kenya: protected places</h3><ul><li>The Protected Areas Order lists, among others, State House and presidential facilities, military barracks and camps, Kenya Air Force and naval bases, all airports, foreign embassies and UN offices at Gigiri, police premises, the DCI headquarters, KEMRI, and the areas around the Central Bank and KICC.</li></ul>' : '') +
+    '<h3>Disclaimer</h3><p class="small" style="line-height:1.55">' + esc(DISCLAIMER) + '</p>' +
+    '<p class="small muted">Laws change and differ by country. If you’re unsure whether something is allowed, don’t post it — ask the police or a lawyer.</p></div>';
+};
+XCLICK.laws = function () { openModal('laws'); };
+XMODAL.getapp = function (m, head) {
+  var R = 'https://github.com/Rodgergaspel/intechscomputers/releases/latest/download/', ios = m.k === 'ios';
+  return head('Get Find & Found', 'Free. Same account and posts on every device.') +
+    '<div class="laws">' +
+    '<h3>Android</h3><p><a class="btn primary" href="' + R + 'FindFound-Android.apk" target="_blank" rel="noopener">Download for Android (.apk)</a></p>' +
+    '<ol class="appsteps small"><li>Open the downloaded file.</li><li>If asked, allow your browser to “install unknown apps”.</li><li>Tap Install. A Play Store version is coming.</li></ol>' +
+    '<h3>Windows</h3><p><a class="btn primary" href="' + R + 'FindFound-Setup-1.0.0.exe" target="_blank" rel="noopener">Download installer (.exe)</a> <a class="btn" href="' + R + 'FindFound-Portable-1.0.0.exe" target="_blank" rel="noopener">Portable version</a></p>' +
+    '<p class="small muted">If Windows shows “Windows protected your PC”, click More info → Run anyway. The app is new and not yet code-signed.</p>' +
+    '<h3' + (ios ? ' style="color:var(--brand,#1d4ed8)"' : '') + '>iPhone and iPad</h3>' +
+    '<ol class="appsteps small"><li>Open the Find & Found website in <b>Safari</b>.</li><li>Tap the Share button, then <b>Add to Home Screen</b>.</li><li>It opens full screen like a normal app. An App Store version is coming.</li></ol>' +
+    '<h3>Web</h3><p class="small">Works in any browser on any phone or computer, nothing to install. On Android or a computer, use the browser menu → <b>Install app</b> to add it to your home screen.</p>' +
+    '<p class="small muted">Only download Find & Found from this page. We never ask for payment to install.</p></div>';
+};
+XCLICK.getapp = function (b) { openModal('getapp', { k: b && b.getAttribute('data-k') }); };
+
 
 // ---------- map views ----------
 var regionsBooted = false;
@@ -3182,6 +3573,7 @@ document.addEventListener('submit', function (e) {
   e.preventDefault();
   var id = e.target.id;
   if (id === 'helpform') { submitHelp(); return; }
+  if (id === 'aiform') { var ain = $('ai-in'); var av = ain ? ain.value : ''; if (ain) ain.value = ''; aiSend(av); return; }
   if (id === 'pfloc') { propLocSearch(); return; }
   if (id === 'rateform') { var rv = parseFloat((($('rate-in') || {}).value || '').replace(/[^\d.]/g, '')); if (!(rv > 1)) { toast('Enter KSh per US$, e.g. 129.9'); return; } if (db && isAdmin) db.doc('settings/site').update({ kesRate: rv }).then(function () { toast('Rate saved.'); }, function (er) { dbErr(er, 'the rate'); }); else { siteCfg.kesRate = rv; renderSections(); } return; }
   if (id === 'cmtform') { submitComment(); return; }
@@ -3190,7 +3582,7 @@ document.addEventListener('submit', function (e) {
   if (id === 'imeiform') { var m1 = S.modal, v1 = ($('imei-in') || {}).value || ''; if (!m1 || normId(v1).length < 5) { toast('Enter the full IMEI or serial number.'); return; } m1.q = v1; m1.busy = true; renderModal(); sha256(normId(v1)).then(function (h) { return db ? db.collection('reports').where('idHash', '==', h).limit(5).get().then(function (sn) { return snapList(sn); }) : reports.filter(function (r) { return r.idHash === h; }); }).then(function (list) { m1.busy = false; m1.result = list; renderModal(); }, function () { m1.busy = false; m1.result = []; renderModal(); }); return; }
   if (id === 'tagform') { var lab = (($('tag-in') || {}).value || '').trim(); if (!lab) { toast('Name the item first, e.g. House keys.'); return; } var tref = db.collection('tags').doc(); tref.set({ ownerId: myId, label: lab.slice(0, 40), createdAt: Date.now() }).then(function () { S.modal.tag = { id: tref.id, label: lab.slice(0, 40), ownerId: myId }; S.modal.label = ''; renderModal(); }, function (er) { dbErr(er, 'the tag'); }); return; }
   if (id === 'storyform') { var stt = (($('st-title') || {}).value || '').trim(), stx = (($('st-text') || {}).value || '').trim(); if (!stt || stx.length < 20) { S.modal.title = stt; S.modal.text = stx; S.modal.err = 'Add a title and a few sentences.'; renderModal(); return; } db.collection('stories').add({ ownerId: myId, title: stt.slice(0, 80), text: stx.slice(0, 1200), createdAt: Date.now() }).then(function () { closeModal(); toast('Thank you for sharing your story.'); }, function (er) { dbErr(er, 'your story'); }); return; }
-  if (id === 'qform') { var s = matches(S.query); if (s.length && !s[0].none) goMatch(s[0]); else if (s.length) toast(s[0].title + '. ' + s[0].sub + '.'); else toast('No match. Try a town like Westlands, coordinates like -1.29, 36.82, or a Google Maps link.'); }
+  if (id === 'qform') { var s = matches(S.query), hq = contentHits(S.query); if (s.length && !s[0].none && !(hq.first && hq.first.a !== 'helptype2' && !/[,\d]/.test(S.query) && !matchesPlaceExactly(S.query, s[0]))) goMatch(s[0]); else if (hq.first) hitGo(hq.first); else if (s.length) toast(s[0].title + '. ' + s[0].sub + '.'); else toast('No match. Try a town like Westlands, coordinates like -1.29, 36.82, or a Google Maps link.'); }
   else if (id === 'composer') sendMsg();
   else if (id === 'propform') submitProp();
   else if (id === 'alertform') submitAlert();
