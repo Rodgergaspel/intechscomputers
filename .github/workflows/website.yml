@@ -1,0 +1,56 @@
+name: Publish Find & Found website
+# Publishes www/ to GitHub Pages. Runs on every change, and every 10 minutes it checks
+# whether Pages has been switched on (Settings -> Pages -> Source: GitHub Actions) and the site
+# isn't live yet, so the website appears by itself as soon as the setting is on.
+on:
+  push:
+    paths: ['www/**', '.github/workflows/website.yml']
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.c.outputs.go }}
+    steps:
+      - id: c
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh api "repos/${GITHUB_REPOSITORY}/pages" >/dev/null 2>&1; then
+            echo "Pages is not switched on yet (Settings -> Pages -> Source: GitHub Actions)."; echo "go=no" >> $GITHUB_OUTPUT; exit 0; fi
+          URL="https://${GITHUB_REPOSITORY_OWNER,,}.github.io/${GITHUB_REPOSITORY#*/}/"
+          if [ "${{ github.event_name }}" = "schedule" ] && curl -sfI "$URL" >/dev/null; then
+            echo "Site already live at $URL"; echo "go=no" >> $GITHUB_OUTPUT; exit 0; fi
+          echo "go=yes" >> $GITHUB_OUTPUT
+
+  deploy:
+    needs: check
+    if: needs.check.outputs.go == 'yes'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: pages
+        uses: actions/configure-pages@v5
+      - name: Make the site findable on Google
+        run: |
+          SITE="${{ steps.pages.outputs.base_url }}/"
+          sed -i "s#__SITE__#${SITE}#g" www/index.html
+          printf 'User-agent: *\nAllow: /\nSitemap: %ssitemap.xml\n' "$SITE" > www/robots.txt
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>%s</loc><changefreq>daily</changefreq><priority>1.0</priority></url></urlset>\n' "$SITE" > www/sitemap.xml
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: www }
+      - id: deploy
+        uses: actions/deploy-pages@v4
